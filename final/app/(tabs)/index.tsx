@@ -29,7 +29,7 @@ export default function HomeScreen() {
 
       <Text>
         NOLFB stands for No One Left Behind. This is an android project
-        developed by STEM 8A
+        developed by STEM 8A.
       </Text>
 
       <ThemedView style={styles.stepContainer}>
