@@ -1,10 +1,12 @@
-import { Image, StyleSheet, Platform } from "react-native";
+import { Image, StyleSheet, Platform, Pressable } from "react-native";
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import React from "react";
 import { Button, View, Text, Alert } from "react-native";
+import { Link } from "expo-router";
+import courses from "@/app/courses/index";
 
 export default function HomeScreen() {
   return (
@@ -20,22 +22,21 @@ export default function HomeScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">tambrams </ThemedText>
       </ThemedView>
+
+      <View>
+        <Image source={require("./../../assets/images/button.jpg")} />
+      </View>
+
       <Text>
         NOLFB stands for No One Left Behind. This is an android project
         developed by STEM 8A
       </Text>
-      <Button
-        title="CREDITS"
-        color="#FF0000"
-        onPress={() => Alert.alert("List of courses")}
-        accessibilityLabel="Learn more about this purple button"
-      />
+
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">try</ThemedText>
         <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press to open developer tools.
+          Edit <ThemedText type="defaultSemiBold">hehehehe</ThemedText> to see
+          changes. Press to open developer tools.
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
