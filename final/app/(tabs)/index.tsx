@@ -24,7 +24,9 @@ export default function HomeScreen() {
       </ThemedView>
 
       <View>
-        <Image source={require("./../../assets/images/button.jpg")} />
+        <Link href={"/courses"}>
+          <Image source={require("./../../assets/images/button.jpg")} />
+        </Link>
       </View>
 
       <Text>
