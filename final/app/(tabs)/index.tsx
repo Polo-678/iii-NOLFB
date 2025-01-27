@@ -6,7 +6,6 @@ import { ThemedView } from "@/components/ThemedView";
 import React from "react";
 import { Button, View, Text, Alert } from "react-native";
 import { Link } from "expo-router";
-import courses from "@/app/courses/index";
 
 export default function HomeScreen() {
   return (
@@ -20,13 +19,15 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">tambrams </ThemedText>
+        <ThemedText type="title">NOLFB</ThemedText>
       </ThemedView>
 
       <View>
-        <Link href={"/courses"}>
-          <Image source={require("./../../assets/images/button.jpg")} />
-        </Link>
+        <View>
+          <Link href="/courses/course1">Course1</Link>
+          <Link href="/courses/course2">ABOUT MO TO</Link>
+        </View>
+        <View> </View>
       </View>
 
       <Text>
