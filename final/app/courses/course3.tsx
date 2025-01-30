@@ -5,7 +5,7 @@ import { Link } from "expo-router";
 export default function course3() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>COURSE 3</Text>
+      <Text style={styles.text}>Papaplitan toh</Text>
       <View>
         <Link href="/courses/course1">Go back to course 1</Link>
         <Link href="/courses/course2">Go to course 2 </Link>
