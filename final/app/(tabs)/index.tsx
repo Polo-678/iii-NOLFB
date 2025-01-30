@@ -23,48 +23,27 @@ export default function HomeScreen() {
       </ThemedView>
 
       <View>
-        <View>
-          <Link href="/courses/course1">Course1</Link>
-          <Link href="/courses/course2">ABOUT MO TO</Link>
-        </View>
-        <View> </View>
+        <Link href="/(tabs)/Homescreen" style={styles.Course2}>
+          Continue
+        </Link>
       </View>
 
       <Text>
         NOLFB stands for No One Left Behind. This is an android project
         developed by STEM 8A.
       </Text>
-
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">try</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">hehehehe</ThemedText> to see
-          changes. Press to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this
-          starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{" "}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  Course2: {
+    color: "#000000", // Classic link blue
+    backgroundColor: "#49416D",
+    width: 100,
+    borderRadius: 10,
+  },
+
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",

@@ -1,13 +1,14 @@
-import { Text, View, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import React from "react";
 import { Link } from "expo-router";
 
-export default function Course1() {
+export default function course3() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>COURSE 1</Text>
+      <Text style={styles.text}>COURSE 3</Text>
       <View>
-        <Link href="/courses/course2">Go to course 2</Link>
-        <Link href="/courses/course3">Go to course 3</Link>
+        <Link href="/courses/course1">Go back to course 1</Link>
+        <Link href="/courses/course2">Go to course 2 </Link>
         <Link href="/(tabs)/Homescreen">Go Back to Home</Link>
       </View>
     </View>
