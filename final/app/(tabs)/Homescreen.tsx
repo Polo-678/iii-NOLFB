@@ -28,6 +28,7 @@ export default function HomeScreen() {
           Course2
         </Link>
         <Link href="/courses/course3">Course3</Link>
+        <Link href="/Quiz/Quiz_game">Quiz game</Link>
       </View>
 
       <Text>
