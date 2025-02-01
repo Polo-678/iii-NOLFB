@@ -44,7 +44,7 @@ export default function Quiz_game() {
         <View>
           <Text> {score} </Text>
           <TouchableOpacity onPress={handRestart}>
-            <Text style={style.resetButton}> Reset</Text>
+            <Text style={style.resetButton}> Reset </Text>
           </TouchableOpacity>
         </View>
       ) : (
