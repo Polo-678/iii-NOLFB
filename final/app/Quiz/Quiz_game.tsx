@@ -1,13 +1,23 @@
 import { StatusBar } from "expo-status-bar";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Quiz_game() {
+  const [shuffledQuestions, setShuffledQuestions] = useState<any[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
+  const shuffleArray = (array: any[]) => {
+    return array.sort(() => Math.random() - 0.5);
+  };
 
-  const quizData = [
+  const [quizData, setQuizData] = useState<
+    {
+      question: string;
+      options: string[];
+      answer: string;
+    }[]
+  >([
     {
       question: "Question 1?",
       options: ["answer1", "answer2", "answer3", "answer4"],
@@ -15,24 +25,39 @@ export default function Quiz_game() {
     },
     {
       question: "naka move on ka na?",
-      options: ["pwede na", "oo", "hindi", "pff"],
+      options: ["Pff", "oo", "hindi", "pwede na"],
       answer: "pwede na",
     },
-  ];
+    {
+      question: "Greatest player of all time??",
+      options: ["Kd", "Mj", "Steph", "Lebron"],
+      answer: "Lebron",
+    },
+    {
+      question: "Which is a laufey song?",
+      options: ["Glue Song", "From the Start", "Juno", "Juna"],
+      answer: "From the Start",
+    },
+  ]);
   const handleAnswer = (selectedAnswer: string) => {
-    const answer = quizData[currentQuestion]?.answer;
+    const answer = shuffledQuestions[currentQuestion]?.answer;
     if (answer === selectedAnswer) {
       setScore((prevScore) => prevScore + 1);
     }
     const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < quizData.length) {
+    if (nextQuestion < shuffledQuestions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
     }
   };
 
+  useEffect(() => {
+    setShuffledQuestions(shuffleArray([...quizData])); // Shuffle the questions on load
+  }, []);
+
   const handRestart = () => {
+    setShuffledQuestions(shuffleArray([...quizData])); // Reshuffle on restart
     setCurrentQuestion(0);
     setScore(0);
     setShowScore(false);
@@ -51,9 +76,9 @@ export default function Quiz_game() {
         <View style={style.questioncontainer}>
           <Text style={style.questionText}>
             {" "}
-            {quizData[currentQuestion]?.question}
+            {shuffledQuestions[currentQuestion]?.question}
           </Text>
-          {quizData[currentQuestion]?.options.map((item) => {
+          {shuffledQuestions[currentQuestion]?.options.map((item: string) => {
             return (
               <TouchableOpacity
                 onPress={() => handleAnswer(item)}
@@ -77,7 +102,7 @@ const style = StyleSheet.create({
     justifyContent: "center",
   },
   questioncontainer: {
-    backgroundColor: "@DDDDDD",
+    backgroundColor: "#DDDDDD",
     padding: 10,
     margin: 10,
     borderRadius: 5,
@@ -97,7 +122,7 @@ const style = StyleSheet.create({
     fontSize: 24,
   },
   resetButton: {
-    borderColor: "Pi",
+    borderColor: "black",
     borderWidth: 2,
     margin: 10,
   },
