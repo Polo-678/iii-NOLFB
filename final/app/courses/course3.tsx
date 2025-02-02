@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
 
-export default function course3() {
+export default function Course3() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Papaplitan toh</Text>

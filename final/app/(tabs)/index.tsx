@@ -19,16 +19,17 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">nolfb</ThemedText>
+        <ThemedText type="title">NOLFB</ThemedText>
       </ThemedView>
 
-      <View>
-        <Link href="/(tabs)/Homescreen" style={styles.Course2}>
-          Continue
+      <View style={styles.Continue}>
+        
+        <Link href="/(tabs)/Homescreen">
+        <Image source={require("@/assets/images/coure3.png")} />
         </Link>
       </View>
 
-      <Text>
+      <Text style={styles.Text}>
         NOLFB stands for No One Left Behind. This is an android project
         developed by STEM 8A Group1.
       </Text>
@@ -38,9 +39,10 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   Course2: {
+    alignItems: "center",
     color: "#000000", // Classic link blue
     backgroundColor: "#49416D",
-    width: 100,
+    width: 500,
     borderRadius: 10,
   },
 
@@ -54,10 +56,30 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   reactLogo: {
-    height: 178,
+    alignItems: "center",
+    height: 200,
     width: 290,
     bottom: 0,
     left: 0,
     position: "absolute",
   },
+  Continue: {
+    color: "#ffffff", // Classic link blue
+    borderRadius: 10,
+
+    alignItems: "center",
+    height: 50,
+    width: 300,
+    padding: 10,
+    bottom:-10,
+    
+  },
+  Text: {
+    color: "#ffffff", // Classic link blue
+    textAlign: "center",
+    height: 100,
+    bottom: -80
+    
+  },
+
 });
