@@ -22,64 +22,61 @@ export default function HomeScreen() {
         <ThemedText type="title">NOLFB</ThemedText>
       </ThemedView>
 
+      {/* Image inside a Link */}
       <View style={styles.Continue}>
-        
         <Link href="/(tabs)/Homescreen">
-        <Image source={require("@/assets/images/coure3.png")} />
+          <Image
+            source={require("@/assets/images/coure3.png")}
+            style={styles.image}
+          />
         </Link>
       </View>
 
-      <Text style={styles.Text}>
-        NOLFB stands for No One Left Behind. This is an android project
-        developed by STEM 8A Group1.
-      </Text>
+      {/* Fixed Position Text */}
+      <View style={styles.textContainer}>
+        <Text style={styles.Text}>
+          NOLFB stands for No One Left Behind. This is an android project
+          developed by STEM 8A Group1.
+        </Text>
+      </View>
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  Course2: {
-    alignItems: "center",
-    color: "#000000", // Classic link blue
-    backgroundColor: "#49416D",
-    width: 500,
-    borderRadius: 10,
-  },
-
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",
     gap: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
   reactLogo: {
     alignItems: "center",
     height: 200,
     width: 290,
+    position: "absolute",
     bottom: 0,
     left: 0,
-    position: "absolute",
   },
   Continue: {
-    color: "#ffffff", // Classic link blue
-    borderRadius: 10,
-
     alignItems: "center",
-    height: 50,
-    width: 300,
-    padding: 10,
-    bottom:-10,
-    
+    marginVertical: 10, // Adds spacing
+  },
+  image: {
+    width: 400, // Fixed width
+    height: 400, // Fixed height
+    resizeMode: "contain", // Ensures the image scales properly
+  },
+  textContainer: {
+    position: "absolute", // Keeps the text in place
+    bottom: 120, // Adjust based on layout
+    left: 20,
+    right: 20,
+    alignItems: "center",
   },
   Text: {
-    color: "#ffffff", // Classic link blue
+    color: "#ffffff",
     textAlign: "center",
-    height: 100,
-    bottom: -80
-    
+    fontSize: 14,
+    width: "90%", // Prevents text from stretching
   },
-
 });
