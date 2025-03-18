@@ -11,6 +11,7 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "app/navigation/stacknavigation"
+    "app/navigation/stacknavigation",
+    "node_modules/util/cache.ts"
   ]
 }

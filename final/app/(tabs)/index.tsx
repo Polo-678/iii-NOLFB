@@ -6,40 +6,16 @@ import { ThemedView } from "@/components/ThemedView";
 import React from "react";
 import { Button, View, Text, Alert } from "react-native";
 import { Link } from "expo-router";
+import { Tabs } from "expo-router";
+import { tokenCache } from "util/cache";
+import { ClerkProvider } from "@clerk/clerk-expo";
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">NOLFB</ThemedText>
-      </ThemedView>
-
-      {/* Image inside a Link */}
-      <View style={styles.Continue}>
-        <Link href="/(tabs)/Homescreen">
-          <Image
-            source={require("@/assets/images/coure3.png")}
-            style={styles.image}
-          />
-        </Link>
-      </View>
-
-      {/* Fixed Position Text */}
-      <View style={styles.textContainer}>
-        <Text style={styles.Text}>
-          NOLFB stands for No One Left Behind. This is an android project
-          developed by STEM 8A Group1.
-        </Text>
-      </View>
-    </ParallaxScrollView>
+    <ThemedView style={styles.titleContainer}>
+      <ThemedText type="title">NOLFB</ThemedText>
+      <Text> Welcome to NOLFB </Text>
+    </ThemedView>
   );
 }
 

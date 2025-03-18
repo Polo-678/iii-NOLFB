@@ -19,7 +19,7 @@ export default function Quiz_game() {
     }[]
   >([
     {
-      question: "Question 1?",
+      question: "Mahal mo ba? Mahal mo pa ba? Mahal ka pa ba?",
       options: ["answer1", "answer2", "answer3", "answer4"],
       answer: "answer1",
     },

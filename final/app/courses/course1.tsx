@@ -8,7 +8,7 @@ export default function Course1() {
       <View>
         <Link href="/courses/course2">Go to course 2</Link>
         <Link href="/courses/course3">Go to course 3</Link>
-        <Link href="/(tabs)/Homescreen">Go Back to Home</Link>
+        <Link href="/courses/Homescreen">Go Back to Home</Link>
       </View>
     </View>
   );
