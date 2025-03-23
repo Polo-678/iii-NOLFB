@@ -5,6 +5,7 @@ import { SignedIn, SignedOut, useUser, useAuth } from "@clerk/clerk-expo";
 import { useEffect, useState } from "react";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import React from "react";
 
 export default function StudentDashboard() {
   const Tab = createBottomTabNavigator();
@@ -18,7 +19,17 @@ export default function StudentDashboard() {
           style={styles.image}
         />
       </Link>
+
+      <Link href="/Quiz/quizgametest">
+        <Image
+          source={require("@/assets/images/coure3.png")}
+          style={styles.image}
+        />
+      </Link>
+
     </View>
+
+    
   );
 }
 

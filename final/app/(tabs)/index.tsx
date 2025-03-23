@@ -7,17 +7,22 @@ import React from "react";
 import { Button, View, Text, Alert } from "react-native";
 import { Link } from "expo-router";
 import { Tabs } from "expo-router";
-import { tokenCache } from "util/cache";
+import { tokenCache } from "@/app/util/cache";
 import { ClerkProvider } from "@clerk/clerk-expo";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-export default function HomeScreen() {
+export default function HomeScreen()
+ {
   return (
+    
     <ThemedView style={styles.titleContainer}>
       <ThemedText type="title">NOLFB</ThemedText>
       <Text> Welcome to NOLFB </Text>
     </ThemedView>
   );
 }
+const Tab = createBottomTabNavigator();
+
 
 const styles = StyleSheet.create({
   titleContainer: {

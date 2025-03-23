@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet, Image } from "react-native";
 import { Link } from "expo-router";
+import React from "react";
 
 export default function Course1() {
   return (

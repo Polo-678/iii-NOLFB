@@ -10,6 +10,9 @@ import { student } from "../dashboard/students";
 import { teachers } from "../dashboard/teacher";
 import { Homescreen } from "../courses/Homescreen";
 import { Quiz } from "../Quiz/Quiz_game";
+import { quizcreation } from "../courses/quizcreation";
+import { quizedit } from "../Quiz/quiz_edit";
+import { quiztest} from "../Quiz/quizgametest";
 const Tab = createBottomTabNavigator();
 
 export function App() {
@@ -23,6 +26,8 @@ export function App() {
         <Stack.Screen name="students" component={student} />
         <Stack.Screen name="teachers" component={teachers} />
         <Stack.Screen name="Quizgame" component={Quiz} />
+        <Stack.Screen name="createquiz" component={quizcreation} />
+        <Stack.Screen name="test" component={quiztest} />
       </Stack.Navigator>
     </NavigationContainer>
   );

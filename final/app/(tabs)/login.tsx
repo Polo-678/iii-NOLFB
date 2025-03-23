@@ -2,6 +2,7 @@ import { SignedIn, SignedOut, useUser, useAuth } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
 import { Text, View, Button } from "react-native";
 import { useEffect, useState } from "react";
+import React from "react";
 
 export default function Page() {
   const { user } = useUser();
