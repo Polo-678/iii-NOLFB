@@ -23,12 +23,12 @@ export default function HomeScreen() {
       </ThemedView>
 
       <View>
-        <Link href="/courses/course1/course1">Course1</Link>
-        <Link href="/courses/course2/course2" style={styles.hehehhe}>
+        <Link href="/courses/course1/quiz_edit1">edit Course1</Link>
+        <Link href="/courses/course2/quiz_edit2" style={styles.hehehhe}>
           Course2
         </Link>
-        <Link href="/courses/course3/course3">Course3</Link>
-        <Link href="/courses/course4/course4">Course4</Link>
+        <Link href="/courses/course3/quiz_edit3">edit Course3</Link>
+        <Link href="/courses/course4/quiz_edit4">edit Course4</Link>
         <Link href="/Quiz/Quiz_game">Quiz game</Link>
       </View>
 
@@ -66,3 +66,5 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
 });
+
+

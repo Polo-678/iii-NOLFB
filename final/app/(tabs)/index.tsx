@@ -13,6 +13,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 export default function HomeScreen()
  {
+  console.log("nandito ako sa home");
   return (
     
     <ThemedView style={styles.titleContainer}>

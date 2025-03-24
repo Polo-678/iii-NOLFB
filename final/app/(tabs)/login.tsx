@@ -13,7 +13,7 @@ export default function Page() {
     if (!isLoaded) return;
     try {
       await signOut();
-      router.replace("/login/(auth)/sign-in");
+      router.replace("/(tabs)/login");
     } catch (error) {
       console.error("Logout failed:", error);
     }

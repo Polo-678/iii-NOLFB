@@ -20,7 +20,7 @@ export default function StudentDashboard() {
         />
       </Link>
 
-      <Link href="/Quiz/quizgametest">
+      <Link href="/Quiz/Quiz_game">
         <Image
           source={require("@/assets/images/coure3.png")}
           style={styles.image}

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Button, Alert } from "react-native";
-import { db } from "../firebase/firebaseConfig";
+import { db } from "../../firebase/firebaseConfig";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 
 export default function StudentScreen() {
   const [questions, setQuestions] = useState<any[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
+  const [showScore, setShowScore] = useState(false);
 
   useEffect(() => {
     const fetchQuestions = async () => {
-      const querySnapshot = await getDocs(collection(db, "questions"));
+      const querySnapshot = await getDocs(collection(db, "course1"));
       const loadedQuestions = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
@@ -41,12 +42,19 @@ export default function StudentScreen() {
 
   return (
     <View style={{ padding: 20 }}>
-      <Text>Question {currentQuestion + 1}: {questions[currentQuestion].question}</Text>
-
-      <Button title={"A: " + questions[currentQuestion].options.A} onPress={() => handleAnswer("A")} />
-      <Button title={"B: " + questions[currentQuestion].options.B} onPress={() => handleAnswer("B")} />
-      <Button title={"C: " + questions[currentQuestion].options.C} onPress={() => handleAnswer("C")} />
-      <Button title={"D: " + questions[currentQuestion].options.D} onPress={() => handleAnswer("D")} />
+      <Text>Question {currentQuestion + 1}: {questions[currentQuestion]?.question || "Loading..."}</Text>
+  
+      {questions[currentQuestion]?.options ? (
+        <>
+          <Button title={`A: ${questions[currentQuestion].options?.A || "N/A"}`} onPress={() => handleAnswer("A")} />
+          <Button title={`B: ${questions[currentQuestion].options?.B || "N/A"}`} onPress={() => handleAnswer("B")} />
+          <Button title={`C: ${questions[currentQuestion].options?.C || "N/A"}`} onPress={() => handleAnswer("C")} />
+          <Button title={`D: ${questions[currentQuestion].options?.D || "N/A"}`} onPress={() => handleAnswer("D")} />
+        </>
+      ) : (
+        <Text style={{ color: "red" }}>Options are missing for this question.</Text>
+      )}
     </View>
   );
+  
 }

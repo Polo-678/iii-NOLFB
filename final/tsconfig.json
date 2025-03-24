@@ -14,5 +14,5 @@
     "expo-env.d.ts",
     "app/navigation/stacknavigation",
     "node_modules/util/cache.ts"
-  ]
+, "app/(tabs)/_layout.oftabstsx"  ]
 }

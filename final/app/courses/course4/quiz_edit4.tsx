@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, Button, Alert } from "react-native";
-import { db } from "../firebase/firebaseConfig";
+import React, { useState, useEffect } from "react";
+import { View, Text, TextInput, Button, Alert, FlatList,   } from "react-native";
+import { db } from "../../firebase/firebaseConfig";
 import { collection, addDoc, getDoc } from "firebase/firestore";
 
 export default function TeacherScreen() {
@@ -26,7 +26,7 @@ export default function TeacherScreen() {
     console.log("Adding question:", questionData); // ✅ Debugging log
   
     try {
-      const docRef = await addDoc(collection(db, "quizzes"), questionData);
+      const docRef = await addDoc(collection(db, "course4"), questionData);
       Alert.alert("Success", `Question added! ID: ${docRef.id}`);
       setQuestion("");
       setOptionA("");

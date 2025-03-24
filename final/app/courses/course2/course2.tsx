@@ -7,8 +7,9 @@ export default function Course2() {
     <View style={styles.container}>
       <Text style={styles.text}>COURSE 2</Text>
       <View>
-        <Link href="/courses/course1">Go back to course 1</Link>
-        <Link href="/courses/course3">Go to course 3</Link>
+        <Link href="/courses/course1/course1">Go back to course 1</Link>
+        <Link href="/courses/course3/course3">Go to course 3</Link>
+         <Link href="/courses/course2/quizgametest2">answer activity</Link>
         <Link href="/courses/Homescreen">Go Back to Home</Link>
       </View>
     </View>
