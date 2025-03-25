@@ -23,7 +23,7 @@ export default function StudentScreen() {
   }, []);
 
   const handleAnswer = (answer: string) => {
-    if (questions[currentQuestion].correctAnswer === answer) {
+    if (questions[currentQuestion].correctAnswer === answer.toLowerCase || answer) {
       setScore((prevScore) => prevScore + 1);
     }
 
