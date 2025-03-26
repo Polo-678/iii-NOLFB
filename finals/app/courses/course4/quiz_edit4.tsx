@@ -11,11 +11,9 @@ export default function TeacherScreen() {
   const [optionD, setOptionD] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState("");
 
+
+
   const handleAddQuestion = async () => {
-    if (!question || !optionA || !optionB || !optionC || !optionD || !correctAnswer) {
-      alert("All fields are required. Please input all the necessary information.");
-      return;
-    }
 
     const questionData = {
       question,
@@ -23,19 +21,28 @@ export default function TeacherScreen() {
       correctAnswer,
     };
 
-    try {
-      const docRef = await addDoc(collection(db, "course4"), questionData);
-      console.log(docRef.id)
-      alert("Successfully added the question");
-      setQuestion("");
-      setOptionA("");
-      setOptionB("");
-      setOptionC("");
-      setOptionD("");
-      setCorrectAnswer("");
-    } catch (error) {
-      alert("Please check all details, eerror adding the question.");
+
+    if (!question || !optionA || !optionB || !optionC || !optionD || !correctAnswer) {
+      alert("All fields are required. Please input all the necessary information.");
+      return;
+    } else if (!["A", "B", "C", "D"].includes(correctAnswer)) {
+      alert("Invalid answer. Please select A, B, C, or D.");
+    } else {
+      try {
+        const docRef = await addDoc(collection(db, "course4"), questionData);
+        console.log(docRef.id)
+        alert("Successfully added the question");
+        setQuestion("");
+        setOptionA("");
+        setOptionB("");
+        setOptionC("");
+        setOptionD("");
+        setCorrectAnswer("");
+      } catch (error) {
+        alert("Please check all details, error adding the question.");
+      }
     }
+    
   };
 
   return (

@@ -19,6 +19,10 @@ import { quizedit3 } from "../courses/course3/quiz_edit3";
 import { quiztest3} from "../courses/course3/quizgametest3";
 import { quizedit4 } from "../courses/course4/quiz_edit4";
 import { quiztest4} from "../courses/course4/quizgametest4";
+import { quizdelete1 } from "../courses/course1/course1(teachers)"
+import { quizdelete2 } from "../courses/course2/course2(teachers)"
+import { quizdelete3 } from "../courses/course3/course3(teachers)"
+import { quizdelete4 } from "../courses/course4/course4(teachers)"
 import {HomescreenTeacher } from "../courses/Homescreenteachers"
 
 const Tab = createBottomTabNavigator();
@@ -42,6 +46,10 @@ export function App() {
         <Stack.Screen name="test3" component={quiztest3} />
         <Stack.Screen name="createquiz4" component={quizedit4} />
         <Stack.Screen name="test4" component={quiztest4} />
+        <Stack.Screen name="delete1" component={quizdelete1} />
+        <Stack.Screen name="delete2" component={quizdelete2} />
+        <Stack.Screen name="delete3" component={quizdelete3} />
+        <Stack.Screen name="delete4" component={quizdelete4} />
         <Stack.Screen name="HomescreenTeacher" component={HomescreenTeacher} />
       </Stack.Navigator>
     </NavigationContainer>

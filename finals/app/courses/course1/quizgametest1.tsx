@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { View, Text, Pressable, Alert, StyleSheet } from "react-native";
 import { db } from "../../firebase/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
+import {  useNavigation } from "@react-navigation/native";
+import { Link } from "expo-router";
+
 
 export default function StudentScreen() {
   const [questions, setQuestions] = useState<any[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
+  const navigation = useNavigation(); 
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -23,7 +27,9 @@ export default function StudentScreen() {
   }, []);
 
   const handleAnswer = (answer: string) => {
-    if (questions[currentQuestion].correctAnswer === answer.toLowerCase || answer) {
+    if ((questions[currentQuestion].correctAnswer) === answer) {
+      console.log("CORRECT " + questions[currentQuestion].correctAnswer);
+      console.log("ANSWER KO " + answer)
       setScore((prevScore) => prevScore + 1);
     }
 
@@ -32,6 +38,9 @@ export default function StudentScreen() {
     } else {
       setShowScore(true);
     }
+
+    console.log("CORRECT " + questions[currentQuestion].correctAnswer);
+    console.log("ANSWER KO " + answer)
   };
 
   const restartQuiz = () => {
@@ -53,6 +62,13 @@ export default function StudentScreen() {
           <Pressable style={styles.button} onPress={restartQuiz}>
             <Text style={styles.buttonText}>Restart Quiz</Text>
           </Pressable>
+
+          <Link href="/courses/course1/course1">
+          <Pressable style={styles.button} >
+            <Text style={styles.buttonText}>go back to course1</Text>
+          </Pressable>
+          </Link>
+
         </View>
       ) : (
         <>

@@ -41,12 +41,20 @@ export default function TeacherScreen() {
   };
 
   const handleEditQuestion = async () => {
+
     if (!editingQuestionId) {
       console.error("No question selected for editing.");
       return;
     }
+    else if (!question || !optionA || !optionB || !optionC || !optionD || !correctAnswer) {
+      alert("All fields are required. Please input all the necessary information.");
+      return;
+    } else if (!["A", "B", "C", "D"].includes(correctAnswer)) {
+      alert("Invalid answer. Please select A, B, C, or D.");
+    } else {
 
     try {
+
       const questionRef = doc(db, "course1", editingQuestionId);
       await updateDoc(questionRef, {
         question,
@@ -64,11 +72,14 @@ export default function TeacherScreen() {
       setOptionC("");
       setOptionD("");
       setCorrectAnswer("");
+      alert("succesfully added the question")
       
       fetchQuestions(); // Refresh the question list
     } catch (error) {
       console.error("Error updating question:", error);
     }
+  }
+
   };
 
   return (

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { StyleSheet, View, Text, Pressable, ScrollView } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Link } from "expo-router";
@@ -7,6 +7,7 @@ import React from "react";
 export default function HomeScreen() {
   return (
     <ThemedView style={styles.container}>
+       <ScrollView>
       {/* Header Section */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>NOLFB: NO ONE LEFT BEHIND (teacher's Dashboard)</Text>
@@ -30,28 +31,46 @@ export default function HomeScreen() {
 
       <Link href="/courses/course2/quiz_edit2">
         <Pressable style={[styles.courseButton, styles.darkerButton]}>
-          <Text style={styles.buttonText}>COURSE 2</Text>
+          <Text style={styles.buttonText}>Add questions for Course 2</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/courses/course2/course2(teachers)" >
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>Edit questions for Course 2</Text>
         </Pressable>
       </Link>
 
       <Link href="/courses/course3/quiz_edit3">
-        <Pressable style={[styles.courseButton, styles.darkestButton]}>
-          <Text style={styles.buttonText}>COURSE 3</Text>
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>Add questions for Course 3</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/courses/course3/course3(teachers)" >
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>Edit questions for Course 3</Text>
         </Pressable>
       </Link>
 
       <Link href="/courses/course4/quiz_edit4">
-        <Pressable style={[styles.courseButton, styles.darkestButton]}>
-          <Text style={styles.buttonText}>COURSE 4</Text>
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>Add questions for Course 4</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/courses/course4/course4(teachers)" >
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>Edit questions for Course 4</Text>
         </Pressable>
       </Link>
 
       <Link href="/(tabs)/login">
-        <Pressable style={[styles.courseButton, styles.darkestButton]}>
+        <Pressable style={styles.courseButton}>
           <Text style={styles.buttonText}>Return to Login</Text>
         </Pressable>
       </Link>
-
+      </ScrollView>
     </ThemedView>
 
     
