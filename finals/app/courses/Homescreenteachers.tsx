@@ -29,6 +29,12 @@ export default function HomeScreen() {
         </Pressable>
       </Link>
 
+      <Link href="/courses/course1/test_results1" >
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>view scores Course 1</Text>
+        </Pressable>
+      </Link>
+
       <Link href="/courses/course2/quiz_edit2">
         <Pressable style={[styles.courseButton, styles.darkerButton]}>
           <Text style={styles.buttonText}>Add questions for Course 2</Text>
@@ -38,6 +44,12 @@ export default function HomeScreen() {
       <Link href="/courses/course2/course2(teachers)" >
         <Pressable style={styles.courseButton}>
           <Text style={styles.buttonText}>Edit questions for Course 2</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/courses/course2/test_results2" >
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>view scores Course 2</Text>
         </Pressable>
       </Link>
 
@@ -52,6 +64,11 @@ export default function HomeScreen() {
           <Text style={styles.buttonText}>Edit questions for Course 3</Text>
         </Pressable>
       </Link>
+      <Link href="/courses/course3/test_results3" >
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>view scores Course 3</Text>
+        </Pressable>
+      </Link>
 
       <Link href="/courses/course4/quiz_edit4">
         <Pressable style={styles.courseButton}>
@@ -62,6 +79,11 @@ export default function HomeScreen() {
       <Link href="/courses/course4/course4(teachers)" >
         <Pressable style={styles.courseButton}>
           <Text style={styles.buttonText}>Edit questions for Course 4</Text>
+        </Pressable>
+      </Link>
+      <Link href="/courses/course4/test_results4" >
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>view scores Course 4</Text>
         </Pressable>
       </Link>
 

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Pressable, Alert, StyleSheet } from "react-native";
 import { db } from "../../firebase/firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, addDoc, setDoc, query, where, doc } from "firebase/firestore";
+import {  useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
-
+import { useUser } from "@clerk/clerk-expo";
 
 export default function StudentScreen() {
   const [questions, setQuestions] = useState<any[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
+  const navigation = useNavigation(); 
 
+  const { user } = useUser();
   useEffect(() => {
     const fetchQuestions = async () => {
       const querySnapshot = await getDocs(collection(db, "course2"));
@@ -24,23 +27,63 @@ export default function StudentScreen() {
     fetchQuestions();
   }, []);
 
-  const handleAnswer = (answer: string) => {
+  const handleAnswer = async (answer: string) => {
+
+    let updatedScore = score;
     if ((questions[currentQuestion].correctAnswer) === answer) {
+      updatedScore = score + 1;
       console.log("CORRECT " + questions[currentQuestion].correctAnswer);
       console.log("ANSWER KO " + answer)
-      setScore((prevScore) => prevScore + 1);
+      setScore(updatedScore);
     }
 
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion((prevQuestion) => prevQuestion + 1);
     } else {
       setShowScore(true);
-    }
+      
+      const studentEmail = user?.primaryEmailAddress?.emailAddress || "anonymous"; // Clerk user email
+
+      try {
+        // Query Firestore to check if the student's score already exists
+        const scoresRef = collection(db, "studentScores2");
+        const q = query(scoresRef, where("student", "==", studentEmail));
+        const querySnapshot = await getDocs(q);
+      
+        if (!querySnapshot.empty) {
+          // If student already has a score, update the existing document
+          const existingDoc = querySnapshot.docs[0]; // Get the first matching document
+          await setDoc(doc(db, "studentScores2", existingDoc.id), {
+            student: studentEmail,
+            score: updatedScore, // Update with the latest score
+            totalQuestions: questions.length,
+            timestamp: new Date(),
+          }, { merge: true }); // merge: true ensures only the updated fields are modified
+      
+          console.log("Score updated successfully!");
+        } else {
+          // If student has no record, create a new document
+          await setDoc(doc(db, "studentScores2", studentEmail), {
+            student: studentEmail,
+            score: updatedScore,
+            totalQuestions: questions.length,
+            timestamp: new Date(),
+          });
+      
+          console.log("New score document created successfully!");
+        }
+      } catch (error) {
+        console.error("Error updating/saving score:", error);
+      }
+
+    };
+      
 
     console.log("CORRECT " + questions[currentQuestion].correctAnswer);
     console.log("ANSWER KO " + answer)
   };
 
+  
 
   const restartQuiz = () => {
     setCurrentQuestion(0);
@@ -48,10 +91,13 @@ export default function StudentScreen() {
     setShowScore(false);
   };
 
+  
+
   if (questions.length === 0) {
     return <Text style={styles.loadingText}>Loading questions...</Text>;
   }
 
+  
   return (
     <View style={styles.container}>
       {showScore ? (
@@ -62,11 +108,12 @@ export default function StudentScreen() {
             <Text style={styles.buttonText}>Restart Quiz</Text>
           </Pressable>
 
-           <Link href="/courses/course2/course2">
-                    <Pressable style={styles.button} >
-                      <Text style={styles.buttonText}>go back to course2</Text>
-                    </Pressable>
-                    </Link>
+          <Link href="/courses/course1/course1">
+          <Pressable style={styles.button} >
+            <Text style={styles.buttonText}>go back to course1</Text>
+          </Pressable>
+          </Link>
+
         </View>
       ) : (
         <>
@@ -93,7 +140,7 @@ export default function StudentScreen() {
       )}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
