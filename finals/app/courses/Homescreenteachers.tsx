@@ -35,6 +35,24 @@ export default function HomeScreen() {
         </Pressable>
       </Link>
 
+      <Link href="/courses/course1/post_testquestions1">
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>Add questions for Post-test 1</Text>
+        </Pressable>
+      </Link>
+
+        <Link href="/courses/course1/post_test1edit">
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}> Edit Questions for Post-test 1</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/courses/course1/post_testresults1">
+        <Pressable style={styles.courseButtonEnder}>
+          <Text style={styles.buttonText}> View Scores for Post-test 1</Text>
+        </Pressable>
+      </Link>
+
       <Link href="/courses/course2/quiz_edit2">
         <Pressable style={[styles.courseButton, styles.darkerButton]}>
           <Text style={styles.buttonText}>Add questions for Course 2</Text>
@@ -47,11 +65,31 @@ export default function HomeScreen() {
         </Pressable>
       </Link>
 
+
       <Link href="/courses/course2/test_results2" >
         <Pressable style={styles.courseButton}>
           <Text style={styles.buttonText}>view scores Course 2</Text>
         </Pressable>
       </Link>
+
+      <Link href="/courses/course2/post_testquestions2">
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>Add questions for Post-test 2</Text>
+        </Pressable>
+      </Link>
+
+        <Link href="/courses/course2/post_test2edit">
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}> Edit Questions for Post-test 2</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/courses/course2/post_testresults2">
+        <Pressable style={styles.courseButtonEnder}>
+          <Text style={styles.buttonText}> View Scores for Post-test 2</Text>
+        </Pressable>
+      </Link>
+      
 
       <Link href="/courses/course3/quiz_edit3">
         <Pressable style={styles.courseButton}>
@@ -70,6 +108,24 @@ export default function HomeScreen() {
         </Pressable>
       </Link>
 
+      <Link href="/courses/course3/post_testquestions3">
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>Add questions for Post-test 3</Text>
+        </Pressable>
+      </Link>
+
+        <Link href="/courses/course3/post_test3edit">
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}> Edit Questions for Post-test 3</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/courses/course3/post_testresults3">
+        <Pressable style={styles.courseButtonEnder}>
+          <Text style={styles.buttonText}> View Scores for Post-test 3</Text>
+        </Pressable>
+      </Link>
+
       <Link href="/courses/course4/quiz_edit4">
         <Pressable style={styles.courseButton}>
           <Text style={styles.buttonText}>Add questions for Course 4</Text>
@@ -81,9 +137,28 @@ export default function HomeScreen() {
           <Text style={styles.buttonText}>Edit questions for Course 4</Text>
         </Pressable>
       </Link>
+
       <Link href="/courses/course4/test_results4" >
         <Pressable style={styles.courseButton}>
           <Text style={styles.buttonText}>view scores Course 4</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/courses/course4/post_testquestions4">
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}>Add questions for Post-test 4</Text>
+        </Pressable>
+      </Link>
+
+        <Link href="/courses/course4/post_test4edit">
+        <Pressable style={styles.courseButton}>
+          <Text style={styles.buttonText}> Edit Questions for Post-test 4</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/courses/course4/post_testresults4">
+        <Pressable style={styles.courseButtonEnder}>
+          <Text style={styles.buttonText}> View Scores for Post-test 4</Text>
         </Pressable>
       </Link>
 
@@ -130,6 +205,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     marginVertical: 5,
+  },
+
+  courseButtonEnder: {
+    width: "100%",
+    padding: 15,
+    backgroundColor: "#D0D0D0", // Light grey button
+    borderRadius: 10,
+    alignItems: "center",
+    marginVertical: 5,
+    marginBottom:30 ,
   },
   darkerButton: {
     backgroundColor: "#A0A0A0", // Medium grey
