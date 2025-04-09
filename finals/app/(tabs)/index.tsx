@@ -4,10 +4,10 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import React from "react";
-import { Button, View, Text, Alert } from "react-native";
+import { Button, View, Text, Alert,ImageBackground, ScrollView } from "react-native";
 import { Link } from "expo-router";
 import { Tabs } from "expo-router";
-import { tokenCache } from "@/app/util/cache";
+import { tokenCache } from "@/src/util/cache";
 import { ClerkProvider } from "@clerk/clerk-expo";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -15,11 +15,23 @@ export default function HomeScreen()
  {
   console.log("nandito ako sa home");
   return (
-    
+<ScrollView>
+   
     <ThemedView style={styles.titleContainer}>
       <ThemedText type="title">NOLFB</ThemedText>
       <Text> Welcome to NOLFB </Text>
     </ThemedView>
+    <ImageBackground
+      style={styles.image}
+        source={require('@/assets/images/bookbackground2.png')} 
+         
+      >
+    
+    </ImageBackground>
+  
+    </ScrollView>
+
+
   );
 }
 const Tab = createBottomTabNavigator();
@@ -45,8 +57,10 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 400, // Fixed width
-    height: 400, // Fixed height
+    height: 800, // Fixed height
     resizeMode: "contain", // Ensures the image scales properly
+    
+    
   },
   textContainer: {
     position: "absolute", // Keeps the text in place
@@ -60,5 +74,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 14,
     width: "90%", // Prevents text from stretching
-  },
+  }
 });

@@ -10,7 +10,7 @@ export default function Course3() {
         <Link href="/courses/course1/course1">Go back to course 1</Link>
         <Link href="/courses/course2/course2">Go to course 2 </Link>
          <Link href="/courses/course4/quizgametest4">answer activity</Link>
-        <Link href="/courses/Homescreen">Go Back to Home</Link>
+        <Link href="/(main)/Homescreenstudents">Go Back to Home</Link>
       </View>
     </View>
   );

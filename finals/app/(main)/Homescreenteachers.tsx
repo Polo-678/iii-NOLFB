@@ -4,7 +4,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { Link } from "expo-router";
 import React from "react";
 
-export default function HomeScreen() {
+export default function HomeScreenteachers() {
   return (
     <ThemedView style={styles.container}>
        <ScrollView>

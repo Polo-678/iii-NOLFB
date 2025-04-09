@@ -1,6 +1,6 @@
 import React, { useEffect, useState, } from "react";
 import { View, Text, FlatList, StyleSheet, ScrollView, Pressable  } from "react-native";
-import { db } from "../../firebase/firebaseConfig";
+import { db } from "../../../src/firebase/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { Link } from "expo-router";
 export default function TeacherScores() {

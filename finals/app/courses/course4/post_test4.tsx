@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Pressable, Alert, StyleSheet } from "react-native";
-import { db } from "../../firebase/firebaseConfig";
+import { db } from "../../../src/firebase/firebaseConfig";
 import { collection, getDocs, addDoc, setDoc, query, where, doc } from "firebase/firestore";
 import {  useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";

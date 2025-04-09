@@ -18,9 +18,15 @@ export default function TabLayout() {
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          default: {},
-        }),
+        tabBarStyle:  {
+          height: 60, // adjust total width if needed
+        },
+        tabBarItemStyle: {
+          width: 100, // 🔥 each tab's width
+        },
+        tabBarLabelStyle: {
+          fontSize: 14, // label size
+        },
       }}
     >
       <Tabs.Screen

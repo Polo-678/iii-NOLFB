@@ -13,7 +13,7 @@ export default function StudentDashboard() {
   return (
     <View>
       <Text>Welcome Student!</Text>
-      <Link href="/courses/Homescreen">
+      <Link href="/(main)/Homescreenstudents">
         <Image
           source={require("@/assets/images/coure3.png")}
           style={styles.image}

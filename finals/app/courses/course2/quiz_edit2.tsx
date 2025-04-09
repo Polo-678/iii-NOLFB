@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, Alert, StyleSheet, Pressable } from "react-native";
-import { db } from "../../firebase/firebaseConfig";
+import { db } from "../../../src/firebase/firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 
 export default function TeacherScreen() {

@@ -18,7 +18,7 @@ export default function Course1() {
         <Link href="/courses/course2/course2">Go to course 2</Link>
         <Link href="/courses/course3/course3">Go to course 3</Link>
         <Link href="/courses/course1/quizgametest1">answer activity</Link>
-        <Link href="/courses/Homescreen">Go Back to Home</Link>
+        <Link href="/(main)/Homescreenstudents">Go Back to Home</Link>
       </View>
       </ScrollView>
     </View>

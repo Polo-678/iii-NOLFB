@@ -52,9 +52,7 @@ export default function SignUpScreen() {
           router.replace("/dashboard/students");
         } else if (role === "teacher") {
           router.replace("/dashboard/teacher");
-        } else {
-          router.replace("/courses/course3");
-        }
+        } 
       } else {
         console.error(JSON.stringify(signUpAttempt, null, 2));
       }

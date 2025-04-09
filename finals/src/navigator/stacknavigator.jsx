@@ -9,7 +9,8 @@ import { course3 } from "../courses/course3/course3";
 import { course4 } from "../courses/course4/course4";
 import { student } from "../dashboard/students";
 import { teachers } from "../dashboard/teacher";
-import { Homescreen } from "../courses/Homescreen";
+import { IndexPage } from "../(tabs)/index";
+import { Homescreenstudents } from "../(main)/Homescreenstudents"; //index
 import { Quiz } from "../Quiz/Quiz_game";
 import { quizedit1 } from "../courses/course1/quiz_edit1";
 import { quiztest1} from "../courses/course1/quizgametest1";
@@ -23,7 +24,7 @@ import { quizdelete1 } from "../courses/course1/course1(teachers)"
 import { quizdelete2 } from "../courses/course2/course2(teachers)"
 import { quizdelete3 } from "../courses/course3/course3(teachers)"
 import { quizdelete4 } from "../courses/course4/course4(teachers)"
-import {HomescreenTeacher } from "../courses/Homescreenteachers"
+import { Homescreenteachers } from "../(main)/Homescreenteachers"
 import {score1 } from "../courses/course1/test_results1"
 import {score2 } from "../courses/course2/test_results2"
 import {score3 } from "../courses/course3/test_results3"
@@ -50,8 +51,8 @@ const Tab = createBottomTabNavigator();
 export function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen">
-        <Stack.Screen name="homescreen" component={Homescreen} />
+      <Stack.Navigator initialRouteName="IndexPage">
+        <Stack.Screen name="Homescreenstudents" component={Homescreenstudents} />
         <Stack.Screen name="course1" component={course1} />
         <Stack.Screen name="course2" component={course2} />
         <Stack.Screen name="course3" component={course3} />
@@ -71,7 +72,7 @@ export function App() {
         <Stack.Screen name="delete2" component={quizdelete2} />
         <Stack.Screen name="delete3" component={quizdelete3} />
         <Stack.Screen name="delete4" component={quizdelete4} />
-        <Stack.Screen name="HomescreenTeacher" component={HomescreenTeacher} />
+        <Stack.Screen name="Homescreenteachers" component={Homescreenteachers} />
         <Stack.Screen name="test_results1" component={score1} /> 
         <Stack.Screen name="test_results2" component={score2} /> 
         <Stack.Screen name="test_results3" component={score3} /> 
