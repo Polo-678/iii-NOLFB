@@ -52,47 +52,47 @@ export function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="IndexPage">
-        <Stack.Screen name="Homescreenstudents" component={Homescreenstudents} />
-        <Stack.Screen name="course1" component={course1} />
-        <Stack.Screen name="course2" component={course2} />
-        <Stack.Screen name="course3" component={course3} />
-        <Stack.Screen name="course4" component={course4} />
-        <Stack.Screen name="students" component={student} />
-        <Stack.Screen name="teachers" component={teachers} />
-        <Stack.Screen name="Quizgame" component={Quiz} />
-        <Stack.Screen name="createquiz1" component={quizedit1} />
-        <Stack.Screen name="test1" component={quiztest1} />
-        <Stack.Screen name="createquiz2" component={quizedit2} />
-        <Stack.Screen name="test2" component={quiztest2} />
-        <Stack.Screen name="createquiz3" component={quizedit3} />
-        <Stack.Screen name="test3" component={quiztest3} />
-        <Stack.Screen name="createquiz4" component={quizedit4} />
-        <Stack.Screen name="test4" component={quiztest4} />
-        <Stack.Screen name="delete1" component={quizdelete1} />
-        <Stack.Screen name="delete2" component={quizdelete2} />
-        <Stack.Screen name="delete3" component={quizdelete3} />
-        <Stack.Screen name="delete4" component={quizdelete4} />
-        <Stack.Screen name="Homescreenteachers" component={Homescreenteachers} />
-        <Stack.Screen name="test_results1" component={score1} /> 
-        <Stack.Screen name="test_results2" component={score2} /> 
-        <Stack.Screen name="test_results3" component={score3} /> 
-        <Stack.Screen name="test_results4" component={score4} /> 
-        <Stack.Screen name="post_test1" component={posttest1} /> 
-        <Stack.Screen name="post_test1edit" component={post_test1edit} /> 
-        <Stack.Screen name="post_testquestions1" component={post_testquestions1} /> 
-        <Stack.Screen name="post_testresults1" component={post_testresults1} /> 
-        <Stack.Screen name="post_test2" component={post_test2} /> 
-        <Stack.Screen name="post_test2edit" component={post_test2edit} /> 
-        <Stack.Screen name="post_testquestions2" component={post_testquestions2} /> 
-        <Stack.Screen name="post_testresults2" component={post_testresults2} /> 
-        <Stack.Screen name="post_test3" component={post_test3} /> 
-        <Stack.Screen name="post_test3edit" component={post_test3edit} /> 
-        <Stack.Screen name="post_testquestions3" component={post_testquestions3} /> 
-        <Stack.Screen name="post_testresults3" component={post_testresults3} /> 
-        <Stack.Screen name="post_test4" component={post_test4} /> 
-        <Stack.Screen name="post_test4edit" component={post_test4edit} /> 
-        <Stack.Screen name="post_testquestions4" component={post_testquestions4} /> 
-        <Stack.Screen name="post_testresults4" component={post_testresults4} /> 
+        <Stack.Screen name="Homescreenstudents" component={Homescreenstudents} options={{ headerShown: true}}  />
+        <Stack.Screen name="course1" component={course1} options={{ headerShown: true}}  />
+        <Stack.Screen name="course2" component={course2} options={{ headerShown: true}}  />
+        <Stack.Screen name="course3" component={course3} options={{ headerShown: true}}  />
+        <Stack.Screen name="course4" component={course4} options={{ headerShown: true}}  />
+        <Stack.Screen name="students" component={student} options={{ headerShown: true}}  />
+        <Stack.Screen name="teachers" component={teachers} options={{ headerShown: true}}  />
+        <Stack.Screen name="Quizgame" component={Quiz} options={{ headerShown: true}}  />
+        <Stack.Screen name="createquiz1" component={quizedit1} options={{ headerShown: true}}  />
+        <Stack.Screen name="test1" component={quiztest1} options={{ headerShown: true}}  />
+        <Stack.Screen name="createquiz2" component={quizedit2} options={{ headerShown: true}}  />
+        <Stack.Screen name="test2" component={quiztest2} options={{ headerShown: true}}  />
+        <Stack.Screen name="createquiz3" component={quizedit3} options={{ headerShown: true}}  />
+        <Stack.Screen name="test3" component={quiztest3} options={{ headerShown: true}}  />
+        <Stack.Screen name="createquiz4" component={quizedit4} options={{ headerShown: true}}  />
+        <Stack.Screen name="test4" component={quiztest4} options={{ headerShown: true}}  />
+        <Stack.Screen name="delete1" component={quizdelete1} options={{ headerShown: true}}  />
+        <Stack.Screen name="delete2" component={quizdelete2} options={{ headerShown: true}}  />
+        <Stack.Screen name="delete3" component={quizdelete3} options={{ headerShown: true}}  />
+        <Stack.Screen name="delete4" component={quizdelete4} options={{ headerShown: true}}  />
+        <Stack.Screen name="Homescreenteachers" component={Homescreenteachers} options={{ headerShown: true}}  />
+        <Stack.Screen name="test_results1" component={score1} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="test_results2" component={score2} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="test_results3" component={score3} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="test_results4" component={score4} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_test1" component={posttest1} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_test1edit" component={post_test1edit} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_testquestions1" component={post_testquestions1} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_testresults1" component={post_testresults1} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_test2" component={post_test2} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_test2edit" component={post_test2edit} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_testquestions2" component={post_testquestions2} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_testresults2" component={post_testresults2} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_test3" component={post_test3} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_test3edit" component={post_test3edit} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_testquestions3" component={post_testquestions3} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_testresults3" component={post_testresults3} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_test4" component={post_test4} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_test4edit" component={post_test4edit} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_testquestions4" component={post_testquestions4} options={{ headerShown: true}}  /> 
+        <Stack.Screen name="post_testresults4" component={post_testresults4} options={{ headerShown: true}}  /> 
       </Stack.Navigator>
     </NavigationContainer>
   );
