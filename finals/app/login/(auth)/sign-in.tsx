@@ -1,6 +1,13 @@
 import { useSignIn } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
-import { Text, TextInput, Button, View, StyleSheet, TouchableOpacity, ImageBackground  } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import React from "react";
 
 export default function Page() {
@@ -32,111 +39,90 @@ export default function Page() {
 
   return (
     <ImageBackground
-    source={require('@/assets/images/bookbackground.png')} 
-    style={styles.background}
-    resizeMode="stretch" 
-  >
-    
-    <View style={styles.container}>
-      <TextInput
-      style={styles.input}
-        autoCapitalize="none"
-        value={emailAddress}
-        placeholder="Enter email"
-        onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
-      />
-      <TextInput
-      style={styles.input}
-        value={password}
-        placeholder="Enter password"
-        secureTextEntry={true}
-        onChangeText={(password) => setPassword(password)}
-      />
-<TouchableOpacity style={styles.signin}  onPress={onSignInPress}>
-  <Text style={styles.signintext}> Sign in </Text>
-</TouchableOpacity>      
-      <View style={styles.center}>
-        <Text style={styles.text}>Don't have an account?</Text>
-        <Link href="/login/(auth)/sign-up">
-        <TouchableOpacity style={styles.signup}>
-          <Text style={styles.signuptext}>Sign up</Text>
-          </TouchableOpacity>
-        </Link>
+      source={require("@/assets/images/bookbackground.png")}
+      style={styles.background}
+      resizeMode="stretch"
+    >
+      <View style={styles.container}>
+        <TextInput
+          style={styles.input}
+          autoCapitalize="none"
+          value={emailAddress}
+          placeholder="Enter email"
+          onChangeText={(text) => setEmailAddress(text)}
+        />
+        <TextInput
+          style={styles.input}
+          value={password}
+          placeholder="Enter password"
+          secureTextEntry
+          onChangeText={(text) => setPassword(text)}
+        />
+
+        <TouchableOpacity style={styles.button} onPress={onSignInPress}>
+          <Text style={styles.buttonText}>Sign in</Text>
+        </TouchableOpacity>
+
+        <View style={styles.center}>
+          <Text style={styles.text}>Don't have an account?</Text>
+          <Link href="/login/(auth)/sign-up" asChild>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Sign up</Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
       </View>
-    </View>
     </ImageBackground>
   );
 }
 
-
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    width: "100%",
+  },
   input: {
     width: "100%",
+    maxWidth: 400,
     padding: 12,
     borderRadius: 10,
     backgroundColor: "#9ACBD0",
     marginBottom: 15,
-    color: "black"
+    color: "black",
   },
-  signin: {
-    marginTop: 10,
-    marginBottom: 2,
+  button: {
     backgroundColor: "#006A71",
-    padding: 15,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
     borderRadius: 10,
     alignItems: "center",
-    width: "50%",  
-  },
-  container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      padding: 20,
-      
-     
-  },
-  signup: {
-    marginTop: 2,
-    marginBottom: 2,
-    backgroundColor: "#006A71",
-    padding: 10,
-    borderRadius: 10,
-    alignItems: "center",
-    width: "100%", 
-    justifyContent: "center",
-  }, 
-  signuptext: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 16,
-    alignItems: "center",
-  justifyContent: "center",
-  }, 
-  signintext: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 16,
-    alignItems: "center",
-  justifyContent: "center",
-  }, 
-  text: {
+    alignSelf: "center",
+    maxWidth: 400,
     width: "100%",
-    padding: 12,
-    borderRadius: 10,
-    backgroundColor: "#F2EFE7",
-  
-    color: "black"
-},
+    marginTop: 12,
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  text: {
+    marginTop: 20,
+    color: "#333",
+  },
   center: {
     alignItems: "center",
     justifyContent: "center",
-}, 
-background: {
-  flex: 1,
-  justifyContent: "center",
-  alignItems: "center",
-  width: "100%",
-  height: "100%", 
-},
-
+    marginTop: 12,
+  },
 });

@@ -44,17 +44,17 @@ export default function Page() {
       </SignedIn>
 
       <SignedOut>
-        <TouchableOpacity style={styles.button}>
-          <Link href="/login/(auth)/sign-in">
+        <Link href="/login/(auth)/sign-in" asChild>
+          <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Sign in</Text>
-          </Link>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        </Link>
 
-        <TouchableOpacity style={styles.button}>
-          <Link href="/login/(auth)/sign-up">
+        <Link href="/login/(auth)/sign-up" asChild>
+          <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Sign up</Text>
-          </Link>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        </Link>
       </SignedOut>
     </View>
   );
