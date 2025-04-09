@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Text, TextInput, Button, View, TouchableOpacity } from "react-native";
+import { Text, TextInput, View, TouchableOpacity, StyleSheet } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 
 export default function SignUpScreen() {
-  //Loads Clerk authentication system
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
 
@@ -15,8 +14,6 @@ export default function SignUpScreen() {
   const [code, setCode] = React.useState("");
 
   const onSignUpPress = async () => {
-    console.log("isLoaded: " + isLoaded);
-    console.log("role " + role);
     if (!isLoaded || !role) return;
 
     try {
@@ -31,20 +28,14 @@ export default function SignUpScreen() {
       setPendingVerification(true);
     } catch (err) {
       alert(JSON.stringify(err, null, 2));
-      console.error(JSON.stringify(err, null, 2));
     }
   };
 
   const onVerifyPress = async () => {
-    console.log("isLoaded: " + isLoaded);
-    console.log("role " + role);
-
     if (!isLoaded) return;
 
     try {
-      const signUpAttempt = await signUp.attemptEmailAddressVerification({
-        code,
-      });
+      const signUpAttempt = await signUp.attemptEmailAddressVerification({ code });
 
       if (signUpAttempt.status === "complete") {
         await setActive({ session: signUpAttempt.createdSessionId });
@@ -52,59 +43,112 @@ export default function SignUpScreen() {
           router.replace("/dashboard/students");
         } else if (role === "teacher") {
           router.replace("/dashboard/teacher");
-        } 
+        }
       } else {
         console.error(JSON.stringify(signUpAttempt, null, 2));
       }
     } catch (err) {
       alert(JSON.stringify(err, null, 2));
-      console.error(JSON.stringify(err, null, 2));
     }
   };
 
   if (pendingVerification) {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Verify your email</Text>
         <TextInput
           value={code}
           placeholder="Enter your verification code"
-          onChangeText={(code) => setCode(code)}
+          onChangeText={setCode}
+          style={styles.input}
         />
-        <Button title="Verify" onPress={onVerifyPress} />
+        <TouchableOpacity style={styles.button} onPress={onVerifyPress}>
+          <Text style={styles.buttonText}>Verify</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 
   return (
-    <View>
-      <Text>Sign up</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Sign up</Text>
       <TextInput
         autoCapitalize="none"
         value={emailAddress}
         placeholder="Enter email"
-        onChangeText={(email) => setEmailAddress(email)}
+        onChangeText={setEmailAddress}
+        style={styles.input}
       />
       <TextInput
         value={password}
         placeholder="Enter password"
-        secureTextEntry={true}
-        onChangeText={(password) => setPassword(password)}
+        secureTextEntry
+        onChangeText={setPassword}
+        style={styles.input}
       />
 
-      <Text>Select your role:</Text>
+      <Text style={styles.subtitle}>Select your role:</Text>
       <TouchableOpacity onPress={() => setRole("student")}>
-        <Text style={{ color: role === "student" ? "blue" : "black" }}>
+        <Text style={[styles.roleOption, role === "student" && styles.selectedRole]}>
           Student
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => setRole("teacher")}>
-        <Text style={{ color: role === "teacher" ? "blue" : "black" }}>
+        <Text style={[styles.roleOption, role === "teacher" && styles.selectedRole]}>
           Teacher
         </Text>
       </TouchableOpacity>
 
-      <Button title="Continue" onPress={onSignUpPress} disabled={!role} />
+      <TouchableOpacity
+        style={[styles.button, !role && styles.buttonDisabled]}
+        onPress={onSignUpPress}
+        disabled={!role}
+      >
+        <Text style={styles.buttonText}>Continue</Text>
+      </TouchableOpacity>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 24,
+    gap: 12,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    fontWeight: "600",
+    marginTop: 10,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    padding: 12,
+    borderRadius: 8,
+  },
+  roleOption: {
+    fontSize: 16,
+    paddingVertical: 4,
+  },
+  selectedRole: {
+    color: "#007aff",
+    fontWeight: "bold",
+  },
+  button: {
+    backgroundColor: "#007aff",
+    padding: 14,
+    borderRadius: 8,
+    marginTop: 20,
+    alignItems: "center",
+  },
+  buttonDisabled: {
+    backgroundColor: "#ccc",
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "600",
+  },
+});

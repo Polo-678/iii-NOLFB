@@ -56,11 +56,9 @@ const styles = StyleSheet.create({
     marginVertical: 10, // Adds spacing
   },
   image: {
-    width: 400, // Fixed width
+    width: 430, // Fixed width
     height: 800, // Fixed height
     resizeMode: "contain", // Ensures the image scales properly
-    
-    
   },
   textContainer: {
     position: "absolute", // Keeps the text in place
