@@ -31,9 +31,12 @@ export default function Page() {
         router.replace("/(tabs)/login");
       } else {
         console.error(JSON.stringify(signInAttempt, null, 2));
+        alert("Incorrect Username or Password");
       }
     } catch (err) {
       console.error(JSON.stringify(err, null, 2));
+      alert("Incorrect Username or Password");
+
     }
   };
 

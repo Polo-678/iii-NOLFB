@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Link } from "expo-router";
@@ -7,58 +7,61 @@ import React from "react";
 export default function HomeScreenstudents() {
   return (
     <ThemedView style={styles.container}>
-      {/* Header Section */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>NOLFB: NO ONE LEFT BEHIND</Text>
-        <Text style={styles.headerDescription}>
-          Description and purpose of NOLFB application
-        </Text>
-      </View>
+      {/* ScrollView to allow scrolling if content overflows */}
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        {/* Header Section */}
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>NOLFB: NO ONE LEFT BEHIND</Text>
+          <Text style={styles.headerDescription}>
+            Description and purpose of NOLFB application
+          </Text>
+        </View>
 
-      {/* Course Buttons */}
-      <Link href="/courses/course1/course1" >
-        <Pressable style={styles.courseButton}>
-          <Text style={styles.buttonText}>COURSE 1</Text>
-        </Pressable>
-      </Link>
+        {/* Course Buttons */}
+        <Link href="/courses/course1/course1" asChild>
+          <TouchableOpacity style={styles.courseButton}>
+            <Text style={styles.buttonText}>COURSE 1</Text>
+          </TouchableOpacity>
+        </Link>
 
-      <Link href="/courses/course2/course2">
-        <Pressable style={[styles.courseButton, styles.darkerButton]}>
-          <Text style={styles.buttonText}>COURSE 2</Text>
-        </Pressable>
-      </Link>
+        <Link href="/courses/course2/course2" asChild>
+          <TouchableOpacity style={styles.courseButton}>
+            <Text style={styles.buttonText}>COURSE 2</Text>
+          </TouchableOpacity>
+        </Link>
 
-      <Link href="/courses/course3/course3">
-        <Pressable style={[styles.courseButton, styles.darkestButton]}>
-          <Text style={styles.buttonText}>COURSE 3</Text>
-        </Pressable>
-      </Link>
+        <Link href="/courses/course3/course3" asChild>
+          <TouchableOpacity style={styles.courseButton}>
+            <Text style={styles.buttonText}>COURSE 3</Text>
+          </TouchableOpacity>
+        </Link>
 
-      <Link href="/courses/course4/course4">
-        <Pressable style={[styles.courseButton, styles.darkestButton]}>
-          <Text style={styles.buttonText}>COURSE 4</Text>
-        </Pressable>
-      </Link>
+        <Link href="/courses/course4/course4" asChild>
+          <TouchableOpacity style={styles.courseButton}>
+            <Text style={styles.buttonText}>COURSE 4</Text>
+          </TouchableOpacity>
+          </Link>
 
-      <Link href="/(tabs)/login">
-        <Pressable style={[styles.courseButton, styles.darkestButton]}>
-          <Text style={styles.buttonText}>Return to Login</Text>
-        </Pressable>
-      </Link>
-
+        <Link href="/(tabs)/login" asChild>
+          <TouchableOpacity style={styles.courseButton}>
+            <Text style={styles.buttonText}>Return to Login</Text>
+          </TouchableOpacity>
+        </Link>
+      </ScrollView>
     </ThemedView>
-
-    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     padding: 20,
     backgroundColor: "#E6E6E6", // Light grey background
+  },
+  scrollContainer: {
+    flexGrow: 1, // Allow scrolling if the content is larger than the screen
+    alignItems: "center", // Center all content
+    justifyContent: "flex-start", // Keep content aligned at the top
   },
   header: {
     width: "100%",
@@ -77,23 +80,21 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   courseButton: {
-    width: "100%",
-    padding: 15,
-    backgroundColor: "#D0D0D0", // Light grey button
+    backgroundColor: "red",
+    paddingVertical: 14,
+    paddingHorizontal: 16,
     borderRadius: 10,
     alignItems: "center",
-    marginVertical: 5,
+    alignSelf: "center",
+    maxWidth: 400,
+    width: "100%",
   },
-  darkerButton: {
-    backgroundColor: "#A0A0A0", // Medium grey
-  },
-  darkestButton: {
-    backgroundColor: "#808080", // Darker grey
-  },
+
   buttonText: {
-    fontSize: 16,
+    color: "#fff",
     fontWeight: "bold",
-    color: "#333",
+    fontSize: 16,
+    textAlign: "center"
   },
   nextButton: {
     width: "100%",

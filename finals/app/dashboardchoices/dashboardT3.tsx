@@ -14,33 +14,42 @@ export default function HomeScreenteachers() {
             <Text style={styles.headerDescription}>
               Description and purpose of NOLFB application
             </Text>
-          </View>
+          </View>  
 
-      {/* Course Buttons */}
-      <Link href="/dashboardchoices/dashboardT1" asChild>
-        <TouchableOpacity style={styles.courseButton1}>
-          <Text style={styles.buttonText}> Go to Course 1 </Text>
-        </TouchableOpacity>
-      </Link>
-
-      <Link href="/dashboardchoices/dashboardT2" asChild>
-        <TouchableOpacity style={styles.courseButton2}>
-          <Text style={styles.buttonText}> Go to Course 2 </Text>
-        </TouchableOpacity>
-      </Link>
-
-      <Link href="/dashboardchoices/dashboardT3" asChild>
+      <Link href="/courses/course3/quiz_edit3" asChild>
         <TouchableOpacity style={styles.courseButton3}>
-          <Text style={styles.buttonText}> Go to Course 3 </Text>
+          <Text style={styles.buttonText}>Add questions for Course 3</Text>
         </TouchableOpacity>
       </Link>
 
-      <Link href="/dashboardchoices/dashboardT4" asChild>
-        <TouchableOpacity style={styles.courseButton4}>
-          <Text style={styles.buttonText}> Go to Course 4 </Text>
+      <Link href="/courses/course3/course3(teachers)" asChild>
+        <TouchableOpacity style={styles.courseButton3}>
+          <Text style={styles.buttonText}>Edit questions for Course 3</Text>
+        </TouchableOpacity>
+      </Link>
+      <Link href="/courses/course3/test_results3" asChild>
+        <TouchableOpacity style={styles.courseButton3}>
+          <Text style={styles.buttonText}>view scores Course 3</Text>
         </TouchableOpacity>
       </Link>
 
+      <Link href="/courses/course3/post_testquestions3" asChild>
+        <TouchableOpacity style={styles.courseButton3}>
+          <Text style={styles.buttonText}>Add questions for Post-test 3</Text>
+        </TouchableOpacity>
+      </Link>
+
+        <Link href="/courses/course3/post_test3edit" asChild>
+        <TouchableOpacity style={styles.courseButton3}>
+          <Text style={styles.buttonText}> Edit Questions for Post-test 3</Text>
+        </TouchableOpacity>
+      </Link>
+
+      <Link href="/courses/course3/post_testresults3" asChild>
+        <TouchableOpacity style={styles.courseButtonEnder}>
+          <Text style={styles.buttonText}> View Scores for Post-test 3</Text>
+        </TouchableOpacity>
+      </Link>
 
      
 

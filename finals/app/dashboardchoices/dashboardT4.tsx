@@ -17,32 +17,42 @@ export default function HomeScreenteachers() {
           </View>
 
       {/* Course Buttons */}
-      <Link href="/dashboardchoices/dashboardT1" asChild>
-        <TouchableOpacity style={styles.courseButton1}>
-          <Text style={styles.buttonText}> Go to Course 1 </Text>
-        </TouchableOpacity>
-      </Link>
 
-      <Link href="/dashboardchoices/dashboardT2" asChild>
-        <TouchableOpacity style={styles.courseButton2}>
-          <Text style={styles.buttonText}> Go to Course 2 </Text>
-        </TouchableOpacity>
-      </Link>
-
-      <Link href="/dashboardchoices/dashboardT3" asChild>
-        <TouchableOpacity style={styles.courseButton3}>
-          <Text style={styles.buttonText}> Go to Course 3 </Text>
-        </TouchableOpacity>
-      </Link>
-
-      <Link href="/dashboardchoices/dashboardT4" asChild>
+      <Link href="/courses/course4/quiz_edit4" asChild>
         <TouchableOpacity style={styles.courseButton4}>
-          <Text style={styles.buttonText}> Go to Course 4 </Text>
+          <Text style={styles.buttonText}>Add questions for Course 4</Text>
         </TouchableOpacity>
       </Link>
 
+      <Link href="/courses/course4/course4(teachers)"  asChild>
+        <TouchableOpacity style={styles.courseButton4}>
+          <Text style={styles.buttonText}>Edit questions for Course 4</Text>
+        </TouchableOpacity>
+      </Link>
 
-     
+      <Link href="/courses/course4/test_results4" asChild>
+        <TouchableOpacity style={styles.courseButton4}>
+          <Text style={styles.buttonText}>view scores Course 4</Text>
+        </TouchableOpacity>
+      </Link>
+
+      <Link href="/courses/course4/post_testquestions4" asChild>
+        <TouchableOpacity style={styles.courseButton4}>
+          <Text style={styles.buttonText}>Add questions for Post-test 4</Text>
+        </TouchableOpacity>
+      </Link>
+
+        <Link href="/courses/course4/post_test4edit" asChild>
+        <TouchableOpacity style={styles.courseButton4}>
+          <Text style={styles.buttonText}> Edit Questions for Post-test 4</Text>
+        </TouchableOpacity>
+      </Link>
+
+      <Link href="/courses/course4/post_testresults4" asChild>
+        <TouchableOpacity style={styles.courseButtonEnder}>
+          <Text style={styles.buttonText}> View Scores for Post-test 4</Text>
+        </TouchableOpacity>
+      </Link>
 
       <Link href="/(tabs)/login" asChild>
           <TouchableOpacity style={styles.return}>

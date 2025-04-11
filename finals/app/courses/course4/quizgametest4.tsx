@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Pressable, Alert, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import { db } from "../../../src/firebase/firebaseConfig";
 import { collection, getDocs, addDoc, setDoc, query, where, doc } from "firebase/firestore";
 import {  useNavigation } from "@react-navigation/native";
@@ -104,14 +104,14 @@ export default function StudentScreen() {
         <View style={styles.scoreContainer}>
           <Text style={styles.scoreText}>Quiz Finished!</Text>
           <Text style={styles.scoreText}>Your Score: {score}/{questions.length}</Text>
-          <Pressable style={styles.button} onPress={restartQuiz}>
+          <TouchableOpacity style={styles.button} onPress={restartQuiz}>
             <Text style={styles.buttonText}>Restart Quiz</Text>
-          </Pressable>
+          </TouchableOpacity>
 
-          <Link href="/courses/course1/course1">
-          <Pressable style={styles.button} >
-            <Text style={styles.buttonText}>go back to course1</Text>
-          </Pressable>
+          <Link href="/courses/course4/course4" asChild>
+          <TouchableOpacity style={styles.button} >
+            <Text style={styles.buttonText}>go back to course4</Text>
+          </TouchableOpacity>
           </Link>
 
         </View>
@@ -120,18 +120,18 @@ export default function StudentScreen() {
           <Text style={styles.questionText}>Question {currentQuestion + 1}: {questions[currentQuestion]?.question || "Loading..."}</Text>
           {questions[currentQuestion]?.options ? (
             <>
-              <Pressable style={styles.button} onPress={() => handleAnswer("A")}>
+              <TouchableOpacity style={styles.button} onPress={() => handleAnswer("A")}>
                 <Text style={styles.buttonText}>A: {questions[currentQuestion].options?.A || "N/A"}</Text>
-              </Pressable>
-              <Pressable style={styles.button} onPress={() => handleAnswer("B")}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={() => handleAnswer("B")}>
                 <Text style={styles.buttonText}>B: {questions[currentQuestion].options?.B || "N/A"}</Text>
-              </Pressable>
-              <Pressable style={styles.button} onPress={() => handleAnswer("C")}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={() => handleAnswer("C")}>
                 <Text style={styles.buttonText}>C: {questions[currentQuestion].options?.C || "N/A"}</Text>
-              </Pressable>
-              <Pressable style={styles.button} onPress={() => handleAnswer("D")}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={() => handleAnswer("D")}>
                 <Text style={styles.buttonText}>D: {questions[currentQuestion].options?.D || "N/A"}</Text>
-              </Pressable>
+              </TouchableOpacity>
             </>
           ) : (
             <Text style={styles.errorText}>Options are missing for this question.</Text>
