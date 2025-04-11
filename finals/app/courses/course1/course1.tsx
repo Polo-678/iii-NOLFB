@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity } from "rea
 import { Link } from "expo-router";
 import React from "react";
 
+
 export default function Course1() {
   return (
     <View style={styles.container}>

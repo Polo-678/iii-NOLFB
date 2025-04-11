@@ -8,7 +8,7 @@ export default function HomeScreenstudents() {
   return (
     <ThemedView style={styles.container}>
       {/* ScrollView to allow scrolling if content overflows */}
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
         {/* Header Section */}
         <View style={styles.header}>
           <Text style={styles.headerTitle}>NOLFB: NO ONE LEFT BEHIND</Text>
@@ -19,31 +19,31 @@ export default function HomeScreenstudents() {
 
         {/* Course Buttons */}
         <Link href="/courses/course1/course1" asChild>
-          <TouchableOpacity style={styles.courseButton}>
+          <TouchableOpacity style={styles.courseButton1}>
             <Text style={styles.buttonText}>COURSE 1</Text>
           </TouchableOpacity>
         </Link>
 
         <Link href="/courses/course2/course2" asChild>
-          <TouchableOpacity style={styles.courseButton}>
+          <TouchableOpacity style={styles.courseButton2}>
             <Text style={styles.buttonText}>COURSE 2</Text>
           </TouchableOpacity>
         </Link>
 
         <Link href="/courses/course3/course3" asChild>
-          <TouchableOpacity style={styles.courseButton}>
+          <TouchableOpacity style={styles.courseButton3}>
             <Text style={styles.buttonText}>COURSE 3</Text>
           </TouchableOpacity>
         </Link>
 
         <Link href="/courses/course4/course4" asChild>
-          <TouchableOpacity style={styles.courseButton}>
+          <TouchableOpacity style={styles.courseButton4}>
             <Text style={styles.buttonText}>COURSE 4</Text>
           </TouchableOpacity>
           </Link>
 
         <Link href="/(tabs)/login" asChild>
-          <TouchableOpacity style={styles.courseButton}>
+          <TouchableOpacity style={styles.return}>
             <Text style={styles.buttonText}>Return to Login</Text>
           </TouchableOpacity>
         </Link>
@@ -55,53 +55,141 @@ export default function HomeScreenstudents() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: "#E6E6E6", // Light grey background
+    padding: 24,
+    backgroundColor: "#fef6e4",
   },
-  scrollContainer: {
-    flexGrow: 1, // Allow scrolling if the content is larger than the screen
-    alignItems: "center", // Center all content
-    justifyContent: "flex-start", // Keep content aligned at the top
+  scrollView: {
+    flex: 1,
+    width: "100%",
   },
   header: {
     width: "100%",
-    padding: 20,
-    backgroundColor: "#B0B0B0", // Grey header
-    borderRadius: 10,
-    marginBottom: 20,
+    padding: 24,
+    backgroundColor: "#1d3557",
+    borderRadius: 20,
+    marginBottom: 24,
     alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 6,
   },
   headerTitle: {
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: "bold",
+    color: "#fff",
+    marginBottom: 6,
+    textAlign: "center",
   },
   headerDescription: {
-    fontSize: 12,
-    color: "#333",
+    fontSize: 14,
+    color: "#a8dadc",
+    textAlign: "center",
   },
-  courseButton: {
-    backgroundColor: "red",
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    borderRadius: 10,
+  courseButton1: {
+    backgroundColor: "#2a9d8f",
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    borderRadius: 16,
     alignItems: "center",
     alignSelf: "center",
     maxWidth: 400,
     width: "100%",
+    marginVertical: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
-
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 16,
-    textAlign: "center"
+  courseButton2: {
+    backgroundColor: "#f4a261",
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    borderRadius: 16,
+    alignItems: "center",
+    alignSelf: "center",
+    maxWidth: 400,
+    width: "100%",
+    marginVertical: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  courseButton3: {
+    backgroundColor: "#e76f51",
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    borderRadius: 16,
+    alignItems: "center",
+    alignSelf: "center",
+    maxWidth: 400,
+    width: "100%",
+    marginVertical: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  courseButton4: {
+    backgroundColor: "#e63946",
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    borderRadius: 16,
+    alignItems: "center",
+    alignSelf: "center",
+    maxWidth: 400,
+    width: "100%",
+    marginVertical: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  courseButtonEnder: {
+    width: "100%",
+    padding: 16,
+    backgroundColor: "#f1faee",
+    borderRadius: 16,
+    alignItems: "center",
+    marginTop: 12,
+    marginBottom: 30,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  return: {
+    width: "100%",
+    padding: 16,
+    backgroundColor: "#adb5bd",
+    borderRadius: 16,
+    alignItems: "center",
+    marginTop: 12,
+    marginBottom: 30,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   nextButton: {
     width: "100%",
-    padding: 15,
-    backgroundColor: "#C0C0C0", // Light grey similar to course buttons
-    borderRadius: 10,
+    padding: 16,
+    backgroundColor: "#adb5bd",
+    borderRadius: 16,
     alignItems: "center",
-    marginTop: 10,
+    marginTop: 12,
+  },
+  buttonText: {
+    color: "#ffffff",
+    fontWeight: "600",
+    fontSize: 16,
   },
 });
