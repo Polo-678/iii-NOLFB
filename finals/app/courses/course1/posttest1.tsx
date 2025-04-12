@@ -1,39 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import { db } from "../../../src/firebase/firebaseConfig";
-import { collection, getDocs, addDoc, setDoc, query, where, doc } from "firebase/firestore";
-import {  useNavigation } from "@react-navigation/native";
+import { collection, getDocs, setDoc, query, where, doc } from "firebase/firestore";
+import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
 import { useUser } from "@clerk/clerk-expo";
+import { useRouter } from "expo-router";
 
-export default function PostTest1() {
+export default function StudentScreen() {
   const [questions, setQuestions] = useState<any[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const navigation = useNavigation(); 
+  const [attempts, setAttempts] = useState(0);
+  const MAX_ATTEMPTS = 3;
 
+  const navigation = useNavigation();
+  const router = useRouter();
   const { user } = useUser();
+
   useEffect(() => {
-    const fetchQuestions = async () => {
+    const fetchQuestionsAndAttempts = async () => {
       const querySnapshot = await getDocs(collection(db, "Post-test_1"));
       const loadedQuestions = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setQuestions(loadedQuestions);
+
+      const studentEmail = user?.primaryEmailAddress?.emailAddress || "anonymous";
+      const scoresRef = collection(db, "Post-test_1_scores");
+      const q = query(scoresRef, where("student", "==", studentEmail));
+      const attemptSnapshot = await getDocs(q);
+
+      if (!attemptSnapshot.empty) {
+        const data = attemptSnapshot.docs[0].data();
+        const savedAttempts = data.attempts || 1;
+        setAttempts(savedAttempts);
+
+        if (savedAttempts >= MAX_ATTEMPTS) {
+          setShowScore(true);
+          setScore(data.score || 0);
+        }
+      }
     };
 
-    fetchQuestions();
-  }, []);
+    fetchQuestionsAndAttempts();
+  }, [user]);
 
   const handleAnswer = async (answer: string) => {
-
     let updatedScore = score;
-    if ((questions[currentQuestion].correctAnswer) === answer) {
+    if (questions[currentQuestion].correctAnswer === answer) {
       updatedScore = score + 1;
-      console.log("CORRECT " + questions[currentQuestion].correctAnswer);
-      console.log("ANSWER KO " + answer)
       setScore(updatedScore);
     }
 
@@ -41,83 +59,102 @@ export default function PostTest1() {
       setCurrentQuestion((prevQuestion) => prevQuestion + 1);
     } else {
       setShowScore(true);
-      
-      const studentEmail = user?.primaryEmailAddress?.emailAddress || "anonymous"; // Clerk user email
+      const studentEmail = user?.primaryEmailAddress?.emailAddress || "anonymous";
 
       try {
-        // Query Firestore to check if the student's score already exists
-        const scoresRef = collection(db, "studentScores1");
+        const scoresRef = collection(db, "Post-test_1_scores");
         const q = query(scoresRef, where("student", "==", studentEmail));
         const querySnapshot = await getDocs(q);
-      
+
         if (!querySnapshot.empty) {
-          // If student already has a score, update the existing document
-          const existingDoc = querySnapshot.docs[0]; // Get the first matching document
-          await setDoc(doc(db, "studentScores1", existingDoc.id), {
-            student: studentEmail,
-            score: updatedScore, // Update with the latest score
-            totalQuestions: questions.length,
-            timestamp: new Date(),
-          }, { merge: true }); // merge: true ensures only the updated fields are modified
-      
-          console.log("Score updated successfully!");
+          const existingDoc = querySnapshot.docs[0];
+          const updatedAttempts = (existingDoc.data().attempts || 0) +1;
+
+          await setDoc(
+            doc(db, "Post-test_1_scores", existingDoc.id),
+            {
+              student: studentEmail,
+              score: updatedScore,
+              totalQuestions: questions.length,
+              timestamp: new Date(),
+              attempts: updatedAttempts,
+            },
+            { merge: true }
+          );
+          setAttempts(updatedAttempts);
         } else {
-          // If student has no record, create a new document
-          await setDoc(doc(db, "studentScores1", studentEmail), {
+          await setDoc(doc(db, "Post-test_1_scores", studentEmail), {
             student: studentEmail,
             score: updatedScore,
             totalQuestions: questions.length,
             timestamp: new Date(),
+            attempts: 1,
           });
-      
-          console.log("New score document created successfully!");
+          setAttempts(1);
         }
       } catch (error) {
         console.error("Error updating/saving score:", error);
       }
-
-    };
-      
-
-    console.log("CORRECT " + questions[currentQuestion].correctAnswer);
-    console.log("ANSWER KO " + answer)
+    }
   };
-
-  
 
   const restartQuiz = () => {
-    setCurrentQuestion(0);
-    setScore(0);
-    setShowScore(false);
+    if (attempts < MAX_ATTEMPTS) {
+      setCurrentQuestion(0);
+      setScore(0);
+      setShowScore(false);
+    } else {
+      Alert.alert("No more attempts available!", "You have reached your maximum quiz attempts.");
+    }
   };
 
-  
+  const Return = () => {
+    router.replace("/courses/course1/course1");
+  };
 
   if (questions.length === 0) {
     return <Text style={styles.loadingText}>Loading questions...</Text>;
   }
 
-  
+  if (attempts >= MAX_ATTEMPTS && !showScore) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.lockedText}>You’ve reached the maximum number of quiz attempts.</Text>
+        <Text style={styles.scoreText}>Last Score: {score}/{questions.length}</Text>
+        <TouchableOpacity style={styles.button} onPress={Return}>
+          <Text style={styles.buttonText}>Go back to course1</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       {showScore ? (
         <View style={styles.scoreContainer}>
           <Text style={styles.scoreText}>Quiz Finished!</Text>
-          <Text style={styles.scoreText}>Your Score: {score}/{questions.length}</Text>
-          <TouchableOpacity style={styles.button} onPress={restartQuiz}>
-            <Text style={styles.buttonText}>Restart Quiz</Text>
+          <Text style={styles.scoreText}>
+            Your Score: {score}/{questions.length}
+          </Text>
+          <Text style={styles.scoreText}>
+            Attempt {attempts} of {MAX_ATTEMPTS}
+          </Text>
+          {attempts < MAX_ATTEMPTS ? (
+            <TouchableOpacity style={styles.button} onPress={restartQuiz}>
+              <Text style={styles.buttonText}>Restart Quiz</Text>
+            </TouchableOpacity>
+          ) : (
+            <Text style={styles.lockedText}>Quiz Locked: Maximum attempts reached.</Text>
+          )}
+          <TouchableOpacity style={styles.button} onPress={Return}>
+            <Text style={styles.buttonText}>Go back to course1</Text>
           </TouchableOpacity>
-
-          <Link href="/courses/course1/course1" asChild>
-          <TouchableOpacity style={styles.button} >
-            <Text style={styles.buttonText}>go back to course1</Text>
-          </TouchableOpacity>
-          </Link>
-
         </View>
       ) : (
         <>
-          <Text style={styles.questionText}>Question {currentQuestion + 1}: {questions[currentQuestion]?.question || "Loading..."}</Text>
+          <Text style={styles.questionText}>
+            Question {currentQuestion + 1}: {questions[currentQuestion]?.question || "Loading..."}
+          </Text>
           {questions[currentQuestion]?.options ? (
             <>
               <TouchableOpacity style={styles.button} onPress={() => handleAnswer("A")}>
@@ -140,7 +177,7 @@ export default function PostTest1() {
       )}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -148,19 +185,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
-    backgroundImage: "linear-gradient( 30.5deg, #0ba360 0%, #3cba92 100%);"
-
-
+    backgroundColor: "#0ba360",
   },
   questionText: {
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
-    color: "white"
+    color: "white",
   },
   button: {
-    backgroundColor: "linear-gradient(109.6deg, rgb(251, 250, 225) 11.2%, rgb(206, 240, 185) 47.5%, rgb(100, 163, 111) 100.2%);",
+    backgroundColor: "#fbeae0",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
@@ -189,5 +224,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 10,
+    color: "#fff",
+  },
+  lockedText: {
+    fontSize: 16,
+    color: "red",
+    marginVertical: 10,
   },
 });

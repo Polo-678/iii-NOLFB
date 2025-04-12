@@ -68,7 +68,7 @@ export default function StudentScreen() {
 
         if (!querySnapshot.empty) {
           const existingDoc = querySnapshot.docs[0];
-          const updatedAttempts = (existingDoc.data().attempts) + 1;
+          const updatedAttempts = (existingDoc.data().attempts || 0) + 1;
 
           await setDoc(
             doc(db, "studentScores3", existingDoc.id),
