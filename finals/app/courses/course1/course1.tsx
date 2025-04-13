@@ -65,7 +65,7 @@ export default function Course1() {
 
         <Link href="/courses/course1/quizgametest1" replace asChild>
           <TouchableOpacity style={styles.actionCard}>
-            <Text style={styles.actionText}>🎮 Let's Play: Proverbs Game</Text>
+            <Text style={styles.actionText}>🎮 Activity time</Text>
           </TouchableOpacity>
         </Link>
 

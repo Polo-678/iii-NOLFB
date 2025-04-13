@@ -68,11 +68,11 @@ export default function TeacherScores() {
           )}
         />
 
-        <Link href="/(tabs)/login" asChild>
-          <TouchableOpacity>
-            <Text>Return to Login</Text>
-          </TouchableOpacity>
-        </Link>
+       <Link href="/dashboardchoices/dashboardT4" replace asChild>
+                                             <TouchableOpacity >
+                                               <Text >Return to Course 4</Text>
+                                             </TouchableOpacity>
+                                           </Link>
       </ScrollView>
     </View>
   );

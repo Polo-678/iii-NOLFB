@@ -74,6 +74,11 @@ export default function Page() {
             </TouchableOpacity>
           </Link>
         </View>
+        <Link href="/(tabs)/login"  replace asChild>
+                       <TouchableOpacity style={styles.return}>
+                         <Text style={styles.buttonText}>Return </Text>
+                       </TouchableOpacity>
+                     </Link>
       </View>
     </ImageBackground>
   );
@@ -127,5 +132,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 12,
+  },
+  return: {
+    width: "100%",
+    padding: 16,
+    backgroundColor: "#adb5bd",
+    borderRadius: 50,
+    alignItems: "center",
+    marginTop: 12,
+    marginBottom: 30,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
 });

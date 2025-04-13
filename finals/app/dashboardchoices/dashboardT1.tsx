@@ -12,7 +12,6 @@ export default function HomeScreenteachers() {
           <View style={styles.header}>
             <Text style={styles.headerTitle}>NOLFB: NO ONE LEFT BEHIND (Teacher's Dashboard)</Text>
             <Text style={styles.headerDescription}>
-              Description and purpose of NOLFB application
             </Text>
           </View>
 
@@ -55,9 +54,9 @@ export default function HomeScreenteachers() {
 
       
 
-      <Link href="/(tabs)/login"  replace asChild>
+      <Link href="/(main)/Homescreenteachers"  replace asChild>
           <TouchableOpacity style={styles.return}>
-            <Text style={styles.buttonText}>Return to Login</Text>
+            <Text style={styles.buttonText}>Return to Dashnoard</Text>
           </TouchableOpacity>
         </Link>
       </ScrollView>
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#2a9d8f",
     paddingVertical: 16,
     paddingHorizontal: 20,
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     alignSelf: "center",
     maxWidth: 400,
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f4a261",
     paddingVertical: 16,
     paddingHorizontal: 20,
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     alignSelf: "center",
     maxWidth: 400,
@@ -136,7 +135,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#e76f51",
     paddingVertical: 16,
     paddingHorizontal: 20,
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     alignSelf: "center",
     maxWidth: 400,
@@ -152,7 +151,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#e63946",
     paddingVertical: 16,
     paddingHorizontal: 20,
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     alignSelf: "center",
     maxWidth: 400,
@@ -167,8 +166,8 @@ const styles = StyleSheet.create({
   courseButtonEnder: {
     width: "100%",
     padding: 16,
-    backgroundColor: "#f1faee",
-    borderRadius: 16,
+    backgroundColor: "#2a9d8f",
+    borderRadius: 50,
     alignItems: "center",
     marginTop: 12,
     marginBottom: 30,
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 16,
     backgroundColor: "#adb5bd",
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     marginTop: 12,
     marginBottom: 30,
@@ -196,7 +195,7 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 16,
     backgroundColor: "#adb5bd",
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     marginTop: 12,
   },

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, TextInput, View, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
-import { useRouter } from "expo-router";
+import { useRouter, Link } from "expo-router";
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -135,6 +135,12 @@ export default function SignUpScreen() {
       >
         <Text style={styles.buttonText}>Continue</Text>
       </TouchableOpacity>
+
+      <Link href="/(tabs)/login"  replace asChild>
+                             <TouchableOpacity style={styles.return}>
+                               <Text style={styles.buttonText}>Return</Text>
+                             </TouchableOpacity>
+                           </Link>
     </View>
   );
 }
@@ -179,5 +185,19 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     fontWeight: "600",
+  },
+  return: {
+    width: "100%",
+    padding: 16,
+    backgroundColor: "#adb5bd",
+    borderRadius: 50,
+    alignItems: "center",
+    marginTop: 12,
+    marginBottom: 30,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
 });

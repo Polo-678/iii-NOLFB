@@ -65,13 +65,13 @@ export default function Course3() {
           </ScrollView>
         </View>
        
-               <Link href="/courses/course2/post_test2"  replace asChild>
+               <Link href="/courses/course3/post_test3"  replace asChild>
                  <TouchableOpacity style={styles.actionCard}>
                    <Text style={styles.actionText}>🧪 Take the Post-Test</Text>
                  </TouchableOpacity>
                </Link>
        
-               <Link href="/courses/course2/quizgametest2"  replace asChild>
+               <Link href="/courses/course3/quizgametest3"  replace asChild>
                  <TouchableOpacity style={styles.actionCard}>
                    <Text style={styles.actionText}>🎮 Take the Activity</Text>
                  </TouchableOpacity>

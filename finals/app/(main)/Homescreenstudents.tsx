@@ -18,31 +18,31 @@ export default function HomeScreenstudents() {
         </View>
 
         {/* Course Buttons */}
-        <Link href="/courses/course1/course1" asChild>
+        <Link href="/courses/course1/course1" replace asChild>
           <TouchableOpacity style={styles.courseButton1}>
             <Text style={styles.buttonText}>COURSE 1</Text>
           </TouchableOpacity>
         </Link>
 
-        <Link href="/courses/course2/course2" asChild>
+        <Link href="/courses/course2/course2" replace asChild>
           <TouchableOpacity style={styles.courseButton2}>
             <Text style={styles.buttonText}>COURSE 2</Text>
           </TouchableOpacity>
         </Link>
 
-        <Link href="/courses/course3/course3" asChild>
+        <Link href="/courses/course3/course3" replace asChild>
           <TouchableOpacity style={styles.courseButton3}>
             <Text style={styles.buttonText}>COURSE 3</Text>
           </TouchableOpacity>
         </Link>
 
-        <Link href="/courses/course4/course4" asChild>
+        <Link href="/courses/course4/course4" replace asChild>
           <TouchableOpacity style={styles.courseButton4}>
             <Text style={styles.buttonText}>COURSE 4</Text>
           </TouchableOpacity>
           </Link>
 
-        <Link href="/(tabs)/login" asChild>
+        <Link href="/(tabs)/login" replace asChild>
           <TouchableOpacity style={styles.return}>
             <Text style={styles.buttonText}>Return to Login</Text>
           </TouchableOpacity>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#2a9d8f",
     paddingVertical: 16,
     paddingHorizontal: 20,
-    borderRadius: 16,
+    borderRadius:50,
     alignItems: "center",
     alignSelf: "center",
     maxWidth: 400,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f4a261",
     paddingVertical: 16,
     paddingHorizontal: 20,
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     alignSelf: "center",
     maxWidth: 400,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#e76f51",
     paddingVertical: 16,
     paddingHorizontal: 20,
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     alignSelf: "center",
     maxWidth: 400,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#e63946",
     paddingVertical: 16,
     paddingHorizontal: 20,
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     alignSelf: "center",
     maxWidth: 400,
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 16,
     backgroundColor: "#f1faee",
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     marginTop: 12,
     marginBottom: 30,
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 16,
     backgroundColor: "#adb5bd",
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     marginTop: 12,
     marginBottom: 30,
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 16,
     backgroundColor: "#adb5bd",
-    borderRadius: 16,
+    borderRadius: 50,
     alignItems: "center",
     marginTop: 12,
   },
