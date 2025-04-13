@@ -68,7 +68,7 @@ export default function Page() {
 
         <View style={styles.center}>
           <Text style={styles.text}>Don't have an account?</Text>
-          <Link href="/login/(auth)/sign-up" asChild>
+          <Link href="/login/(auth)/sign-up"  replace asChild>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Sign up</Text>
             </TouchableOpacity>

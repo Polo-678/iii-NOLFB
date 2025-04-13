@@ -12,33 +12,64 @@ export default function Course1() {
         </View>
 
         <View style={styles.contentCard}>
+          <Text style={styles.sectionTitle}>💬 Filipino Proverbs & Cultural Wisdom</Text>
+          <ScrollView style={styles.proverbScroll} nestedScrollEnabled={true}>
+            <Text style={styles.contentText}>
+            👵 Damiana L. Eugenio, known as the "Mother of Philippine Folklore," collected amazing proverbs from all over the Philippines.
+    {"\n\n"}✨ These proverbs, or **salawikain**, are short sayings packed with wisdom! They teach life lessons, give advice, and show our values — all in a fun and poetic way.
+    {"\n\n"}🧠 Eugenio grouped them into six awesome categories:
+    {"\n\n"}🔹 **1. Attitudes About Life**
+    {"\n"}• Walang ligaya sa lupa na di dinilig ng luha. – *There is no earthly joy that is not watered with tears.* (Tagalog)
+    {"\n"}• Say liket ban-bantayey ermen. – *Joy is always guarded by sorrow.* (Pangasinan)
+    {"\n"}• Ang kapalaran ko di ko man hanapin, dudulog lalapit kung talagang akin. – *The good fortune meant for me will find me.* (Tagalog)
 
-          <Text style={styles.contentText}>
-          Damiana L. Eugenio, the mother of Philippine Folklore compiled and edited what may very well be considered as the most comprehensive collection of proverbs in our country. There is a limited number of works like this in existence. She spent a lifetime collecting pieces of folk literature that reveal our ancestors‘ wisdom. When she gathered proverbs from various areas in our country, she declared that our elders lived by simple,  yet very meaningful rules of righteous living. In fact, she asserted that even the  Spaniards who colonized our country noticed how proverbs formed part of the native spirit. Spanish missionaries were found to have translated such proverbs and other oral expressions in Spanish in order for their fellow religious people to learn our indigenous languages. By doing so, they were able to interact with the early Filipinos their and eventually introduce the Catholic faith.
+    {"\n\n"}🔹 **2. Ethical Proverbs**
+    {"\n"}• Walang utang na di pinagbayaran. – *No debt remains unpaid.* (Tagalog)
+    {"\n"}• Dai mo pagpaagahan an magigibo mo ngonyan. – *Don’t put off for tomorrow what you can do today.* (Bikol)
+    {"\n"}• Ayau mo in kahui pila’a ha kawa’an mo bunga. – *Don’t cut the tree to get the fruit.* (Tausug)
 
-Proverbs are brief instructive expressions that suggest a specific action,  behavior, or judgment. Referred to by some scholars as ―the wisdom of many and the wit of one‖, they are commonly written in the form of short assertions or poetic two-liners which have rhyme. It is interesting to note that people are easily struck by proverbs when they are woven in conversations or writings. This is perhaps because they have the power to teach people the more essential truths about life and the complexity of living. Compared to lengthy narrations, descriptions, or argumentations, proverbs are  able to effect quickly a change in view or disposition. 
-In Filipino, proverbs are called salawikain or sawikain. They prescribe norms,  impart a lesson, or emphasize traditions and beliefs in a community. In the anthology of  Damiana L. Eugenio, she classified proverbs into six categories: (1) proverbs  expressing a general attitude towards life and the laws that govern life; (2) ethical  proverbs recommending certain virtues and condemning certain vices; (3) proverbs  expressing a system of values; (4) proverbs expressing general truths and observations  about life and human nature; (5) humorous proverbs and (6) miscellaneous proverbs.  Below are examples of each category. 
-          </Text>
+    {"\n\n"}🔹 **3. System of Values**
+    {"\n"}• Ti nasadot a baro cas carne a nadangro. – *A lazy youth is like rotten meat.* (Ilokano)
+    {"\n"}• Ang mga tulo singgot sa taong mangguibuhaton paga bayran gayud sa guihapon. – *Every drop of sweat will be rewarded.* (Boholano)
+    {"\n"}• Isa ka tuig nga tiponon, isa ka takna wagwagon. – *A year’s savings can be lost in a moment.* (Hiligaynon)
+
+    {"\n\n"}🔹 **4. Truths About Life**
+    {"\n"}• Huli man at magaling, naihahabol din. – *A good thing is never too late.* (Tagalog)
+    {"\n"}• Ti saan a matimtemec, nauyong no macaunget. – *Quiet people have deep anger when provoked.* (Ilokano)
+    {"\n"}• Ing mayap a babai, maiguit ya karing rubi. – *A good woman is worth more than rubies.* (Pampango)
+
+    {"\n\n"}🔹 **5. Funny & Witty**
+    {"\n"}• Ang gugma sang tigulang daw igui nga nagakamang. – *Old man's love is like a crawling snail.* (Hiligaynon)
+    {"\n"}• Ako kanhi cabalyero nga wala’y kabilinggan... – *Marriage turned me into a thin man!* (Cebuano)
+    {"\n"}• Kay tagal nanindahan, kabili-bili’y balindang. – *After long shopping, made a bad buy.* (Tagalog)
+
+    {"\n\n"}🔹 **6. Miscellaneous Sayings**
+    {"\n"}• Ing matudtud a pemangca e na balu lebasa’ ng sapa. – *The sleeping boatman doesn't know the rivers he crossed.* (Pampango)
+    {"\n"}• Mapipia nu sumavat ka a maysaosaod... – *Better to weave a net than watch fish.* (Ivatan)
+    {"\n"}• Dica agcapcapoy no bassit ti inapoy... – *Don’t be lazy or shy when food is scarce.* (Ilokano)
+
+    {"\n\n"}📜 Our proverbs are more than just words — they’re treasures of our culture! Every time we use them, write them, or even act them out, we help preserve them for future generations. Let’s be proud and pass them on! 💖
+            </Text>
+          </ScrollView>
         </View>
+
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>📚 Activities & Assessments</Text>
+          <Text style={styles.sectionTitle}>🎯 Activities & Mini Games</Text>
         </View>
 
-    
-
-        <Link href="/courses/course1/posttest1" asChild>
+        <Link href="/courses/course1/posttest1" replace asChild>
           <TouchableOpacity style={styles.actionCard}>
-            <Text style={styles.actionText}>🧪 Take the Post-Test</Text>
+            <Text style={styles.actionText}>🧪 Quiz Time! Take the Post-Test</Text>
           </TouchableOpacity>
         </Link>
 
-        <Link href="/courses/course1/quizgametest1" asChild>
+        <Link href="/courses/course1/quizgametest1" replace asChild>
           <TouchableOpacity style={styles.actionCard}>
-            <Text style={styles.actionText}>🎮 Take the Activity</Text>
+            <Text style={styles.actionText}>🎮 Let's Play: Proverbs Game</Text>
           </TouchableOpacity>
         </Link>
 
-        <Link href="/(main)/Homescreenstudents" asChild>
+        <Link href="/(main)/Homescreenstudents" replace asChild>
           <TouchableOpacity style={styles.backButton}>
             <Text style={styles.backButtonText}>🏠 Back to Home</Text>
           </TouchableOpacity>
@@ -55,33 +86,39 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     padding: 20,
+    paddingBottom: 40,
   },
+  proverbScroll: {
+    maxHeight: 320, 
+    marginTop: 10,
+  },
+  
   header: {
     backgroundColor: "#1E3A8A",
     padding: 24,
-    borderRadius: 16,
+    borderRadius: 20,
     marginBottom: 20,
     alignItems: "center",
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 10,
-    elevation: 3,
+    elevation: 4,
   },
   courseTitle: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: "bold",
     color: "#FFFFFF",
-    marginBottom: 4,
+    marginBottom: 6,
   },
   subTitle: {
-    fontSize: 14,
+    fontSize: 15,
     color: "#CBD5E1",
     textAlign: "center",
   },
   contentCard: {
     backgroundColor: "#FFFFFF",
     padding: 20,
-    borderRadius: 14,
+    borderRadius: 16,
     marginBottom: 24,
     shadowColor: "#000",
     shadowOpacity: 0.05,
@@ -89,48 +126,43 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   contentText: {
-    fontSize: 14,
+    fontSize: 15,
     color: "#1F2937",
-    lineHeight: 22,
+    lineHeight: 24,
   },
   sectionHeader: {
-    marginBottom: 8,
+    marginBottom: 10,
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 20,
+    fontWeight: "700",
     color: "#1E293B",
   },
   actionCard: {
     backgroundColor: "#E0F2FE",
     padding: 16,
-    borderRadius: 12,
-    marginVertical: 6,
+    borderRadius: 14,
+    marginVertical: 8,
     shadowColor: "#000",
-    shadowOpacity: 0.04,
+    shadowOpacity: 0.05,
     shadowRadius: 4,
     elevation: 1,
   },
   actionText: {
     fontSize: 16,
-    fontWeight: "500",
+    fontWeight: "600",
     color: "#0C4A6E",
   },
   backButton: {
     backgroundColor: "#D1D5DB",
     padding: 14,
-    borderRadius: 10,
+    borderRadius: 12,
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 24,
   },
   backButtonText: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: "600",
     color: "#1E293B",
-  },
-  scrollText: {
-    fontSize: 14,
-    lineHeight: 22,
-    color: '#1F2937',
   },
 });

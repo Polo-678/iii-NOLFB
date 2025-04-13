@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, TextInput, View, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, TextInput, View, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 
@@ -26,8 +26,22 @@ export default function SignUpScreen() {
       alert("Please wait, verification in progress");
       await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
       setPendingVerification(true);
-    } catch (err) {
-      alert(JSON.stringify(err, null, 2));
+    } catch (err: any) {
+      if (err.errors && Array.isArray(err.errors)) {
+        const messages = err.errors.map((e: any) => {
+          if (e.meta?.paramName === "email_address") {
+            return "Please enter a valid email address.";
+          } else if (e.meta?.paramName === "password") {
+            return "Password must be at least 8 characters long.";
+          } else {
+            return e.longMessage || "Something went wrong. Please try again.";
+          }
+        });
+  
+        alert(messages.join("\n"));
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
     }
   };
 
@@ -40,15 +54,30 @@ export default function SignUpScreen() {
       if (signUpAttempt.status === "complete") {
         await setActive({ session: signUpAttempt.createdSessionId });
         if (role === "student") {
-          router.replace("/dashboard/students");
+          router.replace("/(main)/Homescreenstudents");
         } else if (role === "teacher") {
-          router.replace("/dashboard/teacher");
+          router.replace("/(main)/Homescreenteachers");
         }
       } else {
+    
         console.error(JSON.stringify(signUpAttempt, null, 2));
       }
-    } catch (err) {
-      alert(JSON.stringify(err, null, 2));
+    } catch (err: any) {
+      console.log("Verification error:", err);
+      if (err.errors && Array.isArray(err.errors)) {
+        const messages = err.errors.map((e: any) => {
+          if (e.meta?.paramName === "code") {
+            return "The verification code is incorrect or expired.";
+          } else {
+            return e.longMessage || "Verification failed. Please try again.";
+          }
+        });
+    
+        Alert.alert('', messages.join("\n"));
+      } else {
+        Alert.alert('', 'Verification failed. Please try again.');
+      }
+    
     }
   };
 

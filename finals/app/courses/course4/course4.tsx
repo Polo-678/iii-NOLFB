@@ -26,19 +26,19 @@ export default function Course3() {
        
               
        
-               <Link href="/courses/course4/post_test4" asChild>
+               <Link href="/courses/course4/post_test4"  replace asChild>
                  <TouchableOpacity style={styles.actionCard}>
                    <Text style={styles.actionText}>🧪 Take the Post-Test</Text>
                  </TouchableOpacity>
                </Link>
        
-               <Link href="/courses/course4/quizgametest4" asChild>
+               <Link href="/courses/course4/quizgametest4"  replace asChild>
                  <TouchableOpacity style={styles.actionCard}>
                    <Text style={styles.actionText}>🎮 Take the Activity</Text>
                  </TouchableOpacity>
                </Link>
        
-               <Link href="/(main)/Homescreenstudents" asChild>
+               <Link href="/(main)/Homescreenstudents"  replace asChild>
                  <TouchableOpacity style={styles.backButton}>
                    <Text style={styles.backButtonText}>🏠 Back to Home</Text>
                  </TouchableOpacity>

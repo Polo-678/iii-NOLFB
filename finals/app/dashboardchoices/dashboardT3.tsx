@@ -16,36 +16,36 @@ export default function HomeScreenteachers() {
             </Text>
           </View>  
 
-      <Link href="/courses/course3/quiz_edit3" asChild>
+      <Link href="/courses/course3/quiz_edit3"  replace asChild>
         <TouchableOpacity style={styles.courseButton3}>
           <Text style={styles.buttonText}>Add questions for Course 3</Text>
         </TouchableOpacity>
       </Link>
 
-      <Link href="/courses/course3/course3(teachers)" asChild>
+      <Link href="/courses/course3/course3(teachers)"  replace asChild>
         <TouchableOpacity style={styles.courseButton3}>
           <Text style={styles.buttonText}>Edit questions for Course 3</Text>
         </TouchableOpacity>
       </Link>
-      <Link href="/courses/course3/test_results3" asChild>
+      <Link href="/courses/course3/test_results3"  replace asChild>
         <TouchableOpacity style={styles.courseButton3}>
           <Text style={styles.buttonText}>view scores Course 3</Text>
         </TouchableOpacity>
       </Link>
 
-      <Link href="/courses/course3/post_testquestions3" asChild>
+      <Link href="/courses/course3/post_testquestions3"  replace asChild>
         <TouchableOpacity style={styles.courseButton3}>
           <Text style={styles.buttonText}>Add questions for Post-test 3</Text>
         </TouchableOpacity>
       </Link>
 
-        <Link href="/courses/course3/post_test3edit" asChild>
+        <Link href="/courses/course3/post_test3edit"  replace asChild>
         <TouchableOpacity style={styles.courseButton3}>
           <Text style={styles.buttonText}> Edit Questions for Post-test 3</Text>
         </TouchableOpacity>
       </Link>
 
-      <Link href="/courses/course3/post_testresults3" asChild>
+      <Link href="/courses/course3/post_testresults3"  replace asChild>
         <TouchableOpacity style={styles.courseButtonEnder}>
           <Text style={styles.buttonText}> View Scores for Post-test 3</Text>
         </TouchableOpacity>
@@ -53,7 +53,7 @@ export default function HomeScreenteachers() {
 
      
 
-      <Link href="/(tabs)/login" asChild>
+      <Link href="/(tabs)/login"  replace asChild>
           <TouchableOpacity style={styles.return}>
             <Text style={styles.buttonText}>Return to Login</Text>
           </TouchableOpacity>

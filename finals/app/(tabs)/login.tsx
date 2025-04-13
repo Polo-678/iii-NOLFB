@@ -33,9 +33,9 @@ export default function Page() {
           style={styles.button}
           onPress={() => {
             if (userRole === "student") {
-              router.push("/dashboard/students");
+              router.push("/(main)/Homescreenstudents");
             } else if (userRole === "teacher") {
-              router.push("/dashboard/teacher");
+              router.push("/(main)/Homescreenteachers");
             }
           }}
         >
