@@ -33,7 +33,7 @@ export default function HomeScreenteachers() {
 
       <Link href="/courses/course2/test_results2"  replace asChild>
         <TouchableOpacity style={styles.courseButton2}>
-          <Text style={styles.buttonText}>view scores Course 2</Text>
+          <Text style={styles.buttonText}>View scores Course 2</Text>
         </TouchableOpacity>
       </Link>
 
