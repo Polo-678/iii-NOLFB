@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, Alert, StyleSheet, Pressable } from "react-native";
-import { db } from "../../firebase/firebaseConfig";
+import { View, Text, TextInput, Button, Alert, StyleSheet, Pressable, TouchableOpacity } from "react-native";
+import { db } from "../../../src/firebase/firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
+import { Link } from "expo-router";
 
 export default function TeacherScreen() {
   const [question, setQuestion] = useState("");
@@ -48,16 +49,23 @@ export default function TeacherScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Add a Question</Text>
-      <TextInput style={styles.input} placeholder="Question" value={question} onChangeText={setQuestion} />
-      <TextInput style={styles.input} placeholder="Option A" value={optionA} onChangeText={setOptionA} />
-      <TextInput style={styles.input} placeholder="Option B" value={optionB} onChangeText={setOptionB} />
-      <TextInput style={styles.input} placeholder="Option C" value={optionC} onChangeText={setOptionC} />
-      <TextInput style={styles.input} placeholder="Option D" value={optionD} onChangeText={setOptionD} />
-      <TextInput style={styles.input} placeholder="Correct Answer (A, B, C, or D)" value={correctAnswer} onChangeText={setCorrectAnswer} />
+      <TextInput style={styles.input} placeholder="Question" placeholderTextColor="blue" value={question} onChangeText={setQuestion} />
+      <TextInput style={styles.input} placeholder="Option A" placeholderTextColor="blue" value={optionA} onChangeText={setOptionA} />
+      <TextInput style={styles.input} placeholder="Option B" placeholderTextColor="blue" value={optionB} onChangeText={setOptionB} />
+      <TextInput style={styles.input} placeholder="Option C" placeholderTextColor="blue" value={optionC} onChangeText={setOptionC} />
+      <TextInput style={styles.input} placeholder="Option D" placeholderTextColor="blue" value={optionD} onChangeText={setOptionD} />
+      <TextInput style={styles.input} placeholder="Correct Answer (A, B, C, or D)" placeholderTextColor="blue" value={correctAnswer} onChangeText={setCorrectAnswer} />
       
       <Pressable style={styles.button} onPress={handleAddQuestion}>
         <Text style={styles.buttonText}>Submit question</Text>
       </Pressable>
+
+      <Link href="/dashboardchoices/dashboardT3" replace asChild>
+                                            <TouchableOpacity style={styles.button1}>
+                                              <Text style={styles.buttonText} >Return to Course 3</Text>
+                                            </TouchableOpacity>
+                                          </Link>
+
     </View>
   );
 }
@@ -96,5 +104,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#ffff",  
-  }
+  },
+  button1: {
+    marginTop: 10,
+    backgroundColor: "#632A23",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    width: "100%",
+  },
 });

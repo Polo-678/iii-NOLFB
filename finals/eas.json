@@ -1,25 +1,48 @@
+// {
+//   "cli": {
+//     "version": ">= 16.0.1",
+//     "appVersionSource": "remote"
+//   },
+//     "build": {
+//       "preview": {
+//         "android": {
+//           "buildType": "apk"
+//         }
+//       },
+//       "preview2": {
+//         "android": {
+//           "gradleCommand": ":app:assembleRelease"
+//         }
+//       },
+//       "preview3": {
+//         "developmentClient": true
+//       },
+//       "preview4": {
+//         "distribution": "internal"
+//       },
+//     "production": {
+//       "autoIncrement": true
+//     }
+//   },
+//   "submit": {
+//     "production": {}
+//   }
+// }
+
+
 {
   "cli": {
-    "version": ">= 16.0.1",
+    "version": ">= 16.2.2",
     "appVersionSource": "remote"
   },
-    "build": {
-      "preview": {
-        "android": {
-          "buildType": "apk"
-        }
-      },
-      "preview2": {
-        "android": {
-          "gradleCommand": ":app:assembleRelease"
-        }
-      },
-      "preview3": {
-        "developmentClient": true
-      },
-      "preview4": {
-        "distribution": "internal"
-      },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
     "production": {
       "autoIncrement": true
     }
@@ -28,3 +51,4 @@
     "production": {}
   }
 }
+

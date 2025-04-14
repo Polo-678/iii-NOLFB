@@ -18,9 +18,15 @@ export default function TabLayout() {
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          default: {},
-        }),
+        tabBarStyle:  {
+          height: 60, // adjust total width if needed
+        },
+        tabBarItemStyle: {
+          width: 100, // 🔥 each tab's width
+        },
+        tabBarLabelStyle: {
+          fontSize: 14, // label size
+        },
       }}
     >
       <Tabs.Screen
@@ -30,6 +36,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="house.fill" color={color} />
           ),
+          headerShown: true,
         }}
       />
       <Tabs.Screen
@@ -39,6 +46,17 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="paperplane.fill" color={color} />
           ),
+          headerShown: true,
+        }}
+      />
+      <Tabs.Screen
+        name="login"
+        options={{
+          title: "Login",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="paperplane.fill" color={color} />
+          ),
+          headerShown: true,
         }}
       />
     </Tabs>

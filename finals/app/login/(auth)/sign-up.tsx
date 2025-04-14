@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Text, TextInput, Button, View, TouchableOpacity } from "react-native";
+import { Text, TextInput, View, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
-import { useRouter } from "expo-router";
+import { useRouter, Link } from "expo-router";
 
 export default function SignUpScreen() {
-  //Loads Clerk authentication system
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
 
@@ -15,8 +14,6 @@ export default function SignUpScreen() {
   const [code, setCode] = React.useState("");
 
   const onSignUpPress = async () => {
-    console.log("isLoaded: " + isLoaded);
-    console.log("role " + role);
     if (!isLoaded || !role) return;
 
     try {
@@ -29,84 +26,178 @@ export default function SignUpScreen() {
       alert("Please wait, verification in progress");
       await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
       setPendingVerification(true);
-    } catch (err) {
-      alert(JSON.stringify(err, null, 2));
-      console.error(JSON.stringify(err, null, 2));
+    } catch (err: any) {
+      if (err.errors && Array.isArray(err.errors)) {
+        const messages = err.errors.map((e: any) => {
+          if (e.meta?.paramName === "email_address") {
+            return "Please enter a valid email address.";
+          } else if (e.meta?.paramName === "password") {
+            return "Password must be at least 8 characters long.";
+          } else {
+            return e.longMessage || "Something went wrong. Please try again.";
+          }
+        });
+  
+        alert(messages.join("\n"));
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
     }
   };
 
   const onVerifyPress = async () => {
-    console.log("isLoaded: " + isLoaded);
-    console.log("role " + role);
-
     if (!isLoaded) return;
 
     try {
-      const signUpAttempt = await signUp.attemptEmailAddressVerification({
-        code,
-      });
+      const signUpAttempt = await signUp.attemptEmailAddressVerification({ code });
 
       if (signUpAttempt.status === "complete") {
         await setActive({ session: signUpAttempt.createdSessionId });
         if (role === "student") {
-          router.replace("/dashboard/students");
+          router.replace("/(main)/Homescreenstudents");
         } else if (role === "teacher") {
-          router.replace("/dashboard/teacher");
-        } else {
-          router.replace("/courses/course3");
+          router.replace("/(main)/Homescreenteachers");
         }
       } else {
+    
         console.error(JSON.stringify(signUpAttempt, null, 2));
       }
-    } catch (err) {
-      alert(JSON.stringify(err, null, 2));
-      console.error(JSON.stringify(err, null, 2));
+    } catch (err: any) {
+      console.log("Verification error:", err);
+      if (err.errors && Array.isArray(err.errors)) {
+        const messages = err.errors.map((e: any) => {
+          if (e.meta?.paramName === "code") {
+            return "The verification code is incorrect or expired.";
+          } else {
+            return e.longMessage || "Verification failed. Please try again.";
+          }
+        });
+    
+        Alert.alert('', messages.join("\n"));
+      } else {
+        Alert.alert('', 'Verification failed. Please try again.');
+      }
+    
     }
   };
 
   if (pendingVerification) {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Verify your email</Text>
         <TextInput
           value={code}
           placeholder="Enter your verification code"
-          onChangeText={(code) => setCode(code)}
+          onChangeText={setCode}
+          style={styles.input}
         />
-        <Button title="Verify" onPress={onVerifyPress} />
+        <TouchableOpacity style={styles.button} onPress={onVerifyPress}>
+          <Text style={styles.buttonText}>Verify</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 
   return (
-    <View>
-      <Text>Sign up</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Sign up</Text>
       <TextInput
         autoCapitalize="none"
         value={emailAddress}
         placeholder="Enter email"
-        onChangeText={(email) => setEmailAddress(email)}
+        onChangeText={setEmailAddress}
+        style={styles.input}
       />
       <TextInput
         value={password}
         placeholder="Enter password"
-        secureTextEntry={true}
-        onChangeText={(password) => setPassword(password)}
+        secureTextEntry
+        onChangeText={setPassword}
+        style={styles.input}
       />
 
-      <Text>Select your role:</Text>
+      <Text style={styles.subtitle}>Select your role:</Text>
       <TouchableOpacity onPress={() => setRole("student")}>
-        <Text style={{ color: role === "student" ? "blue" : "black" }}>
+        <Text style={[styles.roleOption, role === "student" && styles.selectedRole]}>
           Student
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => setRole("teacher")}>
-        <Text style={{ color: role === "teacher" ? "blue" : "black" }}>
+        <Text style={[styles.roleOption, role === "teacher" && styles.selectedRole]}>
           Teacher
         </Text>
       </TouchableOpacity>
 
-      <Button title="Continue" onPress={onSignUpPress} disabled={!role} />
+      <TouchableOpacity
+        style={[styles.button, !role && styles.buttonDisabled]}
+        onPress={onSignUpPress}
+        disabled={!role}
+      >
+        <Text style={styles.buttonText}>Continue</Text>
+      </TouchableOpacity>
+
+      <Link href="/(tabs)/login"  replace asChild>
+                             <TouchableOpacity style={styles.return}>
+                               <Text style={styles.buttonText}>Return</Text>
+                             </TouchableOpacity>
+                           </Link>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 24,
+    gap: 12,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    fontWeight: "600",
+    marginTop: 10,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    padding: 12,
+    borderRadius: 8,
+  },
+  roleOption: {
+    fontSize: 16,
+    paddingVertical: 4,
+  },
+  selectedRole: {
+    color: "#007aff",
+    fontWeight: "bold",
+  },
+  button: {
+    backgroundColor: "#007aff",
+    padding: 14,
+    borderRadius: 8,
+    marginTop: 20,
+    alignItems: "center",
+  },
+  buttonDisabled: {
+    backgroundColor: "#ccc",
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "600",
+  },
+  return: {
+    width: "100%",
+    padding: 16,
+    backgroundColor: "#adb5bd",
+    borderRadius: 50,
+    alignItems: "center",
+    marginTop: 12,
+    marginBottom: 30,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+});

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet, FlatList, ScrollView} from "react-native";
-import { db } from "../../firebase/firebaseConfig";
+import { View, Text, TextInput, Pressable, StyleSheet, FlatList, ScrollView, TouchableOpacity} from "react-native";
+import { db } from "../../../src/firebase/firebaseConfig";
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { Link } from "expo-router";
 
 export default function TeacherScreen() {
   const [question, setQuestion] = useState("");
@@ -115,6 +116,12 @@ export default function TeacherScreen() {
           </View>
         )}
       />
+      <Link href="/dashboardchoices/dashboardT2" replace asChild>
+                                <TouchableOpacity style={styles.button1}>
+                                  <Text style={styles.buttonText} >Return to Course 2</Text>
+                                </TouchableOpacity>
+                              </Link>
+                           
 
       {/* Edit Question Form - Show Only When Editing */}
       {editBtnStatus && (
@@ -200,6 +207,14 @@ const styles = StyleSheet.create({
       padding: 10,
       borderRadius: 5,
       alignItems: "center",
+    },
+    button1: {
+      marginTop: 10,
+      backgroundColor: "#632A23",
+      padding: 15,
+      borderRadius: 10,
+      alignItems: "center",
+      width: "100%",
     },
   });
   

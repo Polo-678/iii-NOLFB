@@ -1,64 +1,59 @@
-import { Image, StyleSheet, Platform, Pressable } from "react-native";
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import React from "react";
-import { Button, View, Text, Alert } from "react-native";
-import { Link } from "expo-router";
-import { Tabs } from "expo-router";
-import { tokenCache } from "@/app/util/cache";
-import { ClerkProvider } from "@clerk/clerk-expo";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 
-export default function HomeScreen()
- {
+export default function HomeScreen() {
   console.log("nandito ako sa home");
+
   return (
-    
-    <ThemedView style={styles.titleContainer}>
-      <ThemedText type="title">NOLFB</ThemedText>
-      <Text> Welcome to NOLFB </Text>
-    </ThemedView>
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.overlay}>
+        <Text style={styles.welcome}>📚 Welcome to NOLFB!</Text>
+        <Text style={styles.description}>
+          A quiz app for kids to help improve their reading comprehension skills in a fun way! 🧠📖
+        </Text>
+        <Text style={styles.instructions}>
+          🚀 Get started by logging in with your Gmail account, or sign in to your existing account!
+        </Text>
+      </View>
+    </ScrollView>
   );
 }
-const Tab = createBottomTabNavigator();
-
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
+  container: {
+    flexGrow: 1,
+    justifyContent: "center",
     alignItems: "center",
-    gap: 20,
+    backgroundColor: "#fdf6e4", // updated soft cream background from screenshot
+    padding: 20,
   },
-  reactLogo: {
+  overlay: {
+    backgroundColor: "#ffffffcc", // white with a bit of transparency
+    borderRadius: 20,
+    padding: 30,
+    width: "100%",
+    maxWidth: 400,
     alignItems: "center",
-    height: 200,
-    width: 290,
-    position: "absolute",
-    bottom: 0,
-    left: 0,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
   },
-  Continue: {
-    alignItems: "center",
-    marginVertical: 10, // Adds spacing
-  },
-  image: {
-    width: 400, // Fixed width
-    height: 400, // Fixed height
-    resizeMode: "contain", // Ensures the image scales properly
-  },
-  textContainer: {
-    position: "absolute", // Keeps the text in place
-    bottom: 120, // Adjust based on layout
-    left: 20,
-    right: 20,
-    alignItems: "center",
-  },
-  Text: {
-    color: "#ffffff",
+  welcome: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#1b3254", // navy blue header text
     textAlign: "center",
-    fontSize: 14,
-    width: "90%", // Prevents text from stretching
+    marginBottom: 15,
+  },
+  description: {
+    fontSize: 18,
+    color: "#3b3b3b",
+    textAlign: "center",
+    marginBottom: 15,
+  },
+  instructions: {
+    fontSize: 16,
+    color: "#4a4a4a",
+    textAlign: "center",
   },
 });

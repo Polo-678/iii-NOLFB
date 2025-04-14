@@ -1,8 +1,16 @@
-import React, { useEffect, useState, } from "react";
-import { View, Text, FlatList, StyleSheet, ScrollView, Pressable  } from "react-native";
-import { db } from "../../firebase/firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { db } from "../../../src/firebase/firebaseConfig";
+import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { Link } from "expo-router";
+
 export default function TeacherScores() {
   const [scores, setScores] = useState<any[]>([]);
 
@@ -23,36 +31,50 @@ export default function TeacherScores() {
     fetchScores();
   }, []);
 
+  const resetAttempts = async (studentId: string) => {
+    try {
+      await updateDoc(doc(db, "studentScores1", studentId), {
+        attempts: 0,
+      });
+      console.log(`Attempts reset for ${studentId}`);
+    } catch (error) {
+      console.error("Error resetting attempts:", error);
+    }
+  };
+
   return (
     <View style={styles.container}>
-    <ScrollView>
-      <Text style={styles.title}>Student Scores</Text>
-      <FlatList
-        data={scores}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.scoreItem}>
-            <Text style={styles.studentName}>{item.student}</Text>
-            <Text style={styles.score}>
-              Score: {item.score} / {item.totalQuestions}
-            </Text>
-            <Text style={styles.timestamp}>
-               {item.timestamp?.seconds
-     ? new Date(item.timestamp.seconds * 1000).toLocaleString()
-                  : "No timestamp available"
-              }
-            </Text>
-          </View>
-        )}
-      />
+      <ScrollView>
+        <Text style={styles.title}>Student Scores</Text>
+        <FlatList
+          data={scores}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <View style={styles.scoreItem}>
+              <Text style={styles.studentName}>{item.student}</Text>
+              <Text style={styles.score}>
+                Score: {item.score} / {item.totalQuestions}
+              </Text>
+              <Text style={styles.timestamp}>
+                {item.timestamp?.seconds
+                  ? new Date(item.timestamp.seconds * 1000).toLocaleString()
+                  : "No timestamp available"}
+              </Text>
 
-      <Link href="/(tabs)/login">
-              <Pressable>
-                <Text >Return to Login</Text>
-              </Pressable>
-        </Link> 
-        </ScrollView>
-    </View>
+              <TouchableOpacity onPress={() => resetAttempts(item.id)}>
+                <Text >Reset Attempts</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        />
+
+       <Link href="/dashboardchoices/dashboardT1" replace asChild>
+                 <TouchableOpacity>
+                   <Text>Return to Course 1</Text>
+                 </TouchableOpacity>
+               </Link>
+             </ScrollView>
+      </View>
   );
 }
 

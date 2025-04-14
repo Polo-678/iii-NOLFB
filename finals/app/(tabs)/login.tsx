@@ -1,7 +1,6 @@
 import { SignedIn, SignedOut, useUser, useAuth } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
-import { Text, View, Button } from "react-native";
-import { useEffect, useState } from "react";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 
 export default function Page() {
@@ -21,33 +20,69 @@ export default function Page() {
 
   const userRole = user?.unsafeMetadata?.role || "default";
 
-  console.log("User Role:", userRole);
-
   return (
-    <View>
+    <View style={styles.container}>
       <SignedIn>
         <Text>Hello {user?.emailAddresses[0]?.emailAddress}</Text>
-        <Button title="Logout" onPress={handleLogout} />
-        <Button
-          title="Go to Dashboard"
+
+        <TouchableOpacity style={styles.button} onPress={handleLogout}>
+          <Text style={styles.buttonText}>Logout</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
           onPress={() => {
             if (userRole === "student") {
-              router.push("/dashboard/students");
+              router.push("/(main)/Homescreenstudents");
             } else if (userRole === "teacher") {
-              router.push("/dashboard/teacher");
+              router.push("/(main)/Homescreenteachers");
             }
           }}
-        />
+        >
+          <Text style={styles.buttonText}>Go to Dashboard</Text>
+        </TouchableOpacity>
       </SignedIn>
 
       <SignedOut>
-        <Link href="/login/(auth)/sign-in">
-          <Text>Sign in</Text>
+        <Link href="/login/(auth)/sign-in" replace asChild>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Sign in</Text>
+          </TouchableOpacity>
         </Link>
-        <Link href="/login/(auth)/sign-up">
-          <Text>Sign up</Text>
+
+        <Link href="/login/(auth)/sign-up" replace asChild>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Sign up</Text>
+          </TouchableOpacity>
         </Link>
       </SignedOut>
     </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 12,
+  },
+  button: {
+    backgroundColor: "#006A71",
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 10,
+    alignItems: "center",
+    alignSelf: "center",
+    maxWidth: 400,
+    width: "100%",
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+});
+
